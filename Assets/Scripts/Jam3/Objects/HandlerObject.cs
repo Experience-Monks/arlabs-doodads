@@ -1,3 +1,23 @@
+//-----------------------------------------------------------------------
+// <copyright file="HandlerObject.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 using UnityEngine;
 
@@ -5,6 +25,10 @@ using Jam3.Util;
 
 namespace Jam3
 {
+    /// <summary>
+    /// Handler object.
+    /// </summary>
+    /// <seealso cref="MonoBehaviour" />
     public class HandlerObject : MonoBehaviour
     {
         #region Enums
@@ -515,12 +539,10 @@ namespace Jam3
         /// </value>
         public Ray XHandlerRay
         {
-            get
-            {
+            get {
                 return IsXWorldHandler ? xWorldHandlerRay : xLocalHandlerRay;
             }
-            set
-            {
+            set {
                 if (IsXWorldHandler)
                     xWorldHandlerRay = value;
                 else
@@ -536,12 +558,10 @@ namespace Jam3
         /// </value>
         public Ray YHandlerRay
         {
-            get
-            {
+            get {
                 return IsYWorldHandler ? yWorldHandlerRay : yLocalHandlerRay;
             }
-            set
-            {
+            set {
                 if (IsYWorldHandler)
                     yWorldHandlerRay = value;
                 else
@@ -557,12 +577,10 @@ namespace Jam3
         /// </value>
         public Ray ZHandlerRay
         {
-            get
-            {
+            get {
                 return IsZWorldHandler ? zWorldHandlerRay : zLocalHandlerRay;
             }
-            set
-            {
+            set {
                 if (IsZWorldHandler)
                     zWorldHandlerRay = value;
                 else
