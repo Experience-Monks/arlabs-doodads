@@ -1,9 +1,32 @@
-using System;
+//-----------------------------------------------------------------------
+// <copyright file="SelectionManager.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using UnityEngine;
 using Jam3.Util;
 
 namespace Jam3
 {
+    /// <summary>
+    /// Selection manager.
+    /// </summary>
+    /// <seealso cref="Singleton<SelectionManager>" />
     public class SelectionManager : Singleton<SelectionManager>
     {
         #region Exposed fields
@@ -24,8 +47,8 @@ namespace Jam3
 
         #region Non Exposed fields
 
+        // Runtime variables
         private float lastTapTime;
-
         private int objectLayerMask = -1;
         private int objectLayerSecondaryMask = -1;
 
@@ -33,24 +56,48 @@ namespace Jam3
 
         #region Properties
 
+        /// <summary>
+        /// Gets or sets the menu controller u i.
+        /// </summary>
+        /// <value>
+        /// The menu controller u i.
+        /// </value>
         public MenuControllerUI MenuControllerUI
         {
             get => menuControllerUI;
             set => menuControllerUI = value;
         }
 
+        /// <summary>
+        /// Gets or sets the object layer.
+        /// </summary>
+        /// <value>
+        /// The object layer.
+        /// </value>
         public Layers ObjectLayer
         {
             get => objectLayer;
             set => objectLayer = value;
         }
 
+        /// <summary>
+        /// Gets or sets the object layer secundary.
+        /// </summary>
+        /// <value>
+        /// The object layer secundary.
+        /// </value>
         public Layers ObjectLayerSecundary
         {
             get => objectLayerSecundary;
             set => objectLayerSecundary = value;
         }
 
+        /// <summary>
+        /// Gets or sets the selected object.
+        /// </summary>
+        /// <value>
+        /// The selected object.
+        /// </value>
         public ARObject SelectedObject
         {
             get => selectedObject;
@@ -108,7 +155,10 @@ namespace Jam3
 
         #endregion Non Public Methods
 
-
+        /// <summary>
+        /// Selections active.
+        /// </summary>
+        /// <param name="isSelecting">The is selecting.</param>
         public void SelectionActive(bool isSelecting)
         {
             OnSelection?.Invoke(isSelecting, SelectedObject);

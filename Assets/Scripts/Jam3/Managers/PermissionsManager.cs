@@ -1,3 +1,23 @@
+//-----------------------------------------------------------------------
+// <copyright file="PermissionsManager.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -10,32 +30,27 @@ namespace Jam3.OS
     /// </summary>
     public class PermissionsManager : Singleton<PermissionsManager>
     {
+        // which permissions are supported
+        // for now we only support camera, but soon we could support micrphone, etc.
+        /// <summary>
+        /// Permission type.
+        /// </summary>
+        public enum PermissionType
+        {
+            Camera
+        }
+
         // events
         /// <summary>
         /// Event raised when a permission has been updated.
         /// </summary>
         public Action<PermissionType, bool> PermissionsUpdated;
 
+        // Runtime variables
         private bool m_ShouldHaveCameraPermission = false;
-        //private bool hasAskedForPermission = false;
-
-        public bool ShouldHaveCameraPermission
-        {
-            set
-            {
-                m_ShouldHaveCameraPermission = value;
-                SetCachedCameraPermissions(CachedCameraPermissions, true);
-            }
-            get
-            {
-                return m_ShouldHaveCameraPermission;
-            }
-        }
-
-        //public bool HasAskedForPermission { get => hasAskedForPermission; }
+        private bool CachedCameraPermissions;
 
         [SerializeField] private GameObject aRSessionGameObject;
-
         [SerializeField] private ARCameraManager aRCameraManager;
 
 #if UNITY_EDITOR
@@ -43,14 +58,28 @@ namespace Jam3.OS
         [SerializeField] private bool cameraPermissionsInEditor = true;
 #endif
 
-        // which permissions are supported
-        // for now we only support camera, but soon we could support micrphone, etc.
-        public enum PermissionType
+        /// <summary>
+        /// Gets or sets the should have camera permission.
+        /// </summary>
+        /// <value>
+        /// The should have camera permission.
+        /// </value>
+        public bool ShouldHaveCameraPermission
         {
-            Camera
+            set {
+                m_ShouldHaveCameraPermission = value;
+                SetCachedCameraPermissions(CachedCameraPermissions, true);
+            }
+            get {
+                return m_ShouldHaveCameraPermission;
+            }
         }
 
-        private bool CachedCameraPermissions;
+        /// <summary>
+        /// Sets cached camera permissions.
+        /// </summary>
+        /// <param name="state">The state.</param>
+        /// <param name="forceUpdate">The force update.</param>
         private void SetCachedCameraPermissions(bool state, bool forceUpdate = false)
         {
             // check if there was a change and emit an event
@@ -65,7 +94,10 @@ namespace Jam3.OS
             }
         }
 
-        void Start()
+        /// <summary>
+        /// Start.
+        /// </summary>
+        private void Start()
         {
             if (aRCameraManager == null) aRCameraManager = FindObjectOfType<ARCameraManager>();
             if (aRCameraManager == null)
@@ -98,6 +130,10 @@ namespace Jam3.OS
             }
         }
 
+        /// <summary>
+        /// Ons application focus.
+        /// </summary>
+        /// <param name="focusStatus">The focus status.</param>
         private void OnApplicationFocus(bool focusStatus)
         {
             // every time we return to the app, check for permissions changes
@@ -108,6 +144,9 @@ namespace Jam3.OS
             }
         }
 
+        /// <summary>
+        /// Enables a r session.
+        /// </summary>
         public void EnableARSession()
         {
             aRSessionGameObject.SetActive(true);

@@ -1,5 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="CameraCapture.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -8,6 +26,9 @@ using UnityEditor;
 
 namespace Jam3.Render.Capture
 {
+    /// <summary>
+    /// Texture resolutions.
+    /// </summary>
     public enum TextureResolutions
     {
         _512 = 512,
@@ -16,21 +37,32 @@ namespace Jam3.Render.Capture
         _4096 = 4096
     }
 
+    /// <summary>
+    /// Camera capture.
+    /// </summary>
+    /// <seealso cref="MonoBehaviour" />
     public class CameraCapture : MonoBehaviour
     {
         [Header("Texture Capture")]
         public Camera CameraObject = null;
         public TextureResolutions ImageSize = TextureResolutions._2048;
 
+        // Runtime varilables
         private string saveFolder = "";
         private string currentName = "capture";
 
-        void Start()
+        /// <summary>
+        /// Start.
+        /// </summary>
+        private void Start()
         {
             CreateNewFolderForScreenshots();
         }
 
-        void CreateNewFolderForScreenshots()
+        /// <summary>
+        /// Creates new folder for screenshots.
+        /// </summary>
+        private void CreateNewFolderForScreenshots()
         {
             string folderName = Application.dataPath + "/../Captures";
 
@@ -40,6 +72,9 @@ namespace Jam3.Render.Capture
             saveFolder = folderName;
         }
 
+        /// <summary>
+        /// Saves texture.
+        /// </summary>
         public void SaveTexture()
         {
             int imagSize = (int)ImageSize;
@@ -105,22 +140,22 @@ namespace Jam3.Render.Capture
     }
 
 #if UNITY_EDITOR
-        [CustomEditor(typeof(CameraCapture))]
-        public class CameraCaptureEditor : Editor
+    [CustomEditor(typeof(CameraCapture))]
+    public class CameraCaptureEditor : Editor
+    {
+        public override void OnInspectorGUI()
         {
-            public override void OnInspectorGUI()
+            base.OnInspectorGUI();
+            if (!Application.isPlaying) return;
+
+            CameraCapture t = target as CameraCapture;
+
+            if (GUILayout.Button("Capture"))
             {
-                base.OnInspectorGUI();
-                if (!Application.isPlaying) return;
-
-                CameraCapture t = target as CameraCapture;
-
-                if (GUILayout.Button("Capture"))
-                {
-                    t.SaveTexture();
-                };
-            }
+                t.SaveTexture();
+            };
         }
+    }
 #endif
 }
 

@@ -1,3 +1,23 @@
+//-----------------------------------------------------------------------
+// <copyright file="ARMeshGenerationController.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 
@@ -7,9 +27,6 @@ namespace Jam3.AR
 {
     public class ARMeshGenerationController : MonoBehaviour
     {
-        public float DepthConfidenceAverage { get { return m_averageColor; } }
-        public bool IsOverMesh { get { return m_isOverMesh; } }
-        public bool IsReady { get { return m_isReady; } }
         public Action OnScanComplete = null;
         public Action OnMeshScanCompleted = null;
 
@@ -47,11 +64,12 @@ namespace Jam3.AR
         public Material BlitMaterial = null;
         public float BlitTime = 1f;
 
-        //Private Variables
+        // Private Constants
         private const int k_NumThreadsX = 8;
         private const int k_NumThreadsY = 8;
         private const int k_NormalSamplingOffset = 1;
 
+        // Runtime assigned
         private GameObject m_Root = null;
         private List<GameObject> m_MeshObjects = new List<GameObject>();
 
@@ -81,6 +99,25 @@ namespace Jam3.AR
 
         private Vector3 cameraPosition = Vector3.zero;
 
+
+        /// <summary>
+        /// Gets the depth confidence average value from the depth texture.
+        /// </summary>
+        public float DepthConfidenceAverage { get { return m_averageColor; } }
+
+        /// <summary>
+        /// Gets if the collider os over the environment mesh.
+        /// </summary>
+        public bool IsOverMesh { get { return m_isOverMesh; } }
+
+        /// <summary>
+        /// Gets if scan is ready to create the mesh.
+        /// </summary>
+        public bool IsReady { get { return m_isReady; } }
+
+        /// <summary>
+        /// Start.
+        /// </summary>
         private void Start()
         {
             if (SceneCamera == null)
@@ -93,6 +130,9 @@ namespace Jam3.AR
                 m_tempTexture = new Texture2D(BlitRenderTexture.width, BlitRenderTexture.height, TextureFormat.RGBA32, false);
         }
 
+        /// <summary>
+        /// Update.
+        /// </summary>
         void Update()
         {
             if (ARCameraInfo.Initialized && !m_Initialized)
@@ -129,6 +169,9 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Starts scanning.
+        /// </summary>
         public void StartScanning()
         {
             if (CameraCollision != null)
@@ -140,6 +183,9 @@ namespace Jam3.AR
             m_scanning = true;
         }
 
+        /// <summary>
+        /// Spawns mesh.
+        /// </summary>
         public void SpawnMesh()
         {
             if (MeshObject != null)
@@ -169,6 +215,9 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Updates depth data.
+        /// </summary>
         private void UpdateDepthData()
         {
             if (m_Initialized)
@@ -212,6 +261,10 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Initializes mesh.
+        /// </summary>
+        /// <param name="meshObject">The mesh object.</param>
         private void InitializeMesh(GameObject meshObject)
         {
             // Creates template vertices.
@@ -250,6 +303,13 @@ namespace Jam3.AR
             UpdateMesh(mesh, m_Vertices, m_Normals, meshCollider);
         }
 
+        /// <summary>
+        /// Updates mesh.
+        /// </summary>
+        /// <param name="mesh">The mesh.</param>
+        /// <param name="vertices">The vertices.</param>
+        /// <param name="normals">The normals.</param>
+        /// <param name="meshCollider">The mesh collider.</param>
         private void UpdateMesh(Mesh mesh, Vector3[] vertices, Vector3[] normals, MeshCollider meshCollider)
         {
             if (DepthProcessingCS != null)
@@ -292,6 +352,10 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Optimzes mesh.
+        /// </summary>
+        /// <param name="mesh">The mesh.</param>
         private Mesh OptimzeMesh(Mesh mesh)
         {
             List<bool> insideOrNot = new List<bool>();
@@ -362,6 +426,9 @@ namespace Jam3.AR
             return mesh;
         }
 
+        /// <summary>
+        /// Initializes compute shader.
+        /// </summary>
         private void InitializeComputeShader()
         {
             if (DepthProcessingCS != null)
@@ -389,6 +456,11 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Generates triangles.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
         private static int[] GenerateTriangles(int width, int height)
         {
             int[] indices = new int[(height - 1) * (width - 1) * 6];
@@ -426,6 +498,9 @@ namespace Jam3.AR
             return indices;
         }
 
+        /// <summary>
+        /// On destroy.
+        /// </summary>
         private void OnDestroy()
         {
             ClearMeshes();
@@ -443,6 +518,9 @@ namespace Jam3.AR
             m_Root = null;
         }
 
+        /// <summary>
+        /// Clears meshes in scene.
+        /// </summary>
         public void ClearMeshes()
         {
             foreach (GameObject go in m_MeshObjects)
@@ -463,6 +541,9 @@ namespace Jam3.AR
             m_meshCount = 0;
         }
 
+        /// <summary>
+        /// Reset the scan process.
+        /// </summary>
         public void Reset()
         {
             ClearMeshes();

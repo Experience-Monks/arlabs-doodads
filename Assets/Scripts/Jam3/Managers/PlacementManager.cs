@@ -1,3 +1,23 @@
+//-----------------------------------------------------------------------
+// <copyright file="PlacementManager.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using UnityEngine;
 using Jam3.Util;
 
@@ -19,6 +39,7 @@ namespace Jam3
         public Layers BackgroundLayer = Layers.BackgroundMesh;
         public GameObject TargetObject = null;
 
+        // Runtime variables
         private int hitLayerMask = -1;
         private int hitLayerMaskSecundary = -1;
 
@@ -26,13 +47,19 @@ namespace Jam3
         private Vector3 outPosition = new Vector3(-1000f, -1000f, -1000f);
         private Vector3 hitPosition;
 
+        /// <summary>
+        /// Awake.
+        /// </summary>
         public override void Awake()
         {
             base.Awake();
             ShowTarget(false);
         }
 
-        void Start()
+        /// <summary>
+        /// Start.
+        /// </summary>
+        private void Start()
         {
             HasHitPoint = false;
             rayHits = new RaycastHit[5];
@@ -41,7 +68,10 @@ namespace Jam3
             hitLayerMaskSecundary = 1 << (int)BackgroundLayer;
         }
 
-        void Update()
+        /// <summary>
+        /// Update.
+        /// </summary>
+        private void Update()
         {
             GetSurfaceHit();
 
@@ -49,12 +79,19 @@ namespace Jam3
                 TargetObject.transform.position = hitPosition;
         }
 
+        /// <summary>
+        /// Shows target.
+        /// </summary>
+        /// <param name="show">The show.</param>
         public void ShowTarget(bool show)
         {
             if (TargetObject != null)
                 TargetObject.SetActive(show);
         }
 
+        /// <summary>
+        /// Places object.
+        /// </summary>
         public void PlaceObject()
         {
             if (SelectedObject != null)
@@ -71,6 +108,9 @@ namespace Jam3
             Cancel();
         }
 
+        /// <summary>
+        /// Deletes object.
+        /// </summary>
         public void DeleteObject()
         {
             if (SelectionManager.Instance.GetObject() != null)
@@ -95,12 +135,19 @@ namespace Jam3
                 PopUpManager.Instance.CloseAll();
         }
 
+        /// <summary>
+        /// Cancel.
+        /// </summary>
         public void Cancel()
         {
             if (SelectedObject != null)
                 SelectedObject = null;
         }
 
+        /// <summary>
+        /// Sets selected object.
+        /// </summary>
+        /// <param name="arObject">The ar object.</param>
         public void SetSelectedObject(ARObject arObject)
         {
             if (SelectionManager.Instance.SelectedObject == null)
@@ -111,6 +158,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Gets surface hit.
+        /// </summary>
         private void GetSurfaceHit()
         {
             // Clear cache and flag

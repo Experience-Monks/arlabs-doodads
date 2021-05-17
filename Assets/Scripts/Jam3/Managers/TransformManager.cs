@@ -1,4 +1,23 @@
-using System;
+//-----------------------------------------------------------------------
+// <copyright file="TransformManager.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using UnityEngine;
 using Jam3.Util;
 
@@ -60,7 +79,7 @@ namespace Jam3
         [Range(1.5f, 5.0f)]
         public float MaxScale = 5f;
 
-        //Runtime
+        // Runtime variables
         private float scaleSize = 700f;
         private int hitLayerMask = -1;
         private int hitLayerMaskSecundary = -1;
@@ -185,11 +204,20 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Sets mode.
+        /// </summary>
+        /// <param name="handlerMode">The handler mode.</param>
         public void SetMode(HandlerObject.HandlerMode handlerMode)
         {
             mode = handlerMode;
         }
 
+        /// <summary>
+        /// On select.
+        /// </summary>
+        /// <param name="isSelecting">The is selecting.</param>
+        /// <param name="objectSelected">The object selected.</param>
         private void OnSelect(bool isSelecting, ARObject objectSelected)
         {
             if (isSelecting)
@@ -198,6 +226,11 @@ namespace Jam3
                 SelectedObject = null;
         }
 
+        /// <summary>
+        /// Ons touch down.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <param name="touchData">The touch data.</param>
         private void OnTouchDown(int index, TouchManager.TouchElement touchData)
         {
             int touchCount = TouchManager.Instance.TouchsActive;
@@ -239,6 +272,11 @@ namespace Jam3
                 SetInitialScale();
         }
 
+        /// <summary>
+        /// Ons touch up.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <param name="touchData">The touch data.</param>
         private void OnTouchUp(int index, TouchManager.TouchElement touchData)
         {
             int touchCount = TouchManager.Instance.TouchsActive;
@@ -259,6 +297,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Sets initial rotation.
+        /// </summary>
         private void SetInitialRotation()
         {
             TouchManager.TouchElement[] touchElements = TouchManager.Instance.TouchElements;
@@ -282,6 +323,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Sets initial scale.
+        /// </summary>
         private void SetInitialScale()
         {
             TouchManager.TouchElement[] touchElements = TouchManager.Instance.TouchElements;
@@ -293,6 +337,9 @@ namespace Jam3
             initialScale = objectScale;
         }
 
+        /// <summary>
+        /// Moves object.
+        /// </summary>
         private void MoveObject()
         {
             if (selectedObject != null)
@@ -330,6 +377,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Scales object.
+        /// </summary>
         private void ScaleObject()
         {
             if (selectedObject != null)
@@ -354,6 +404,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Rotates object.
+        /// </summary>
         private void RotateObject()
         {
             if (selectedObject != null)

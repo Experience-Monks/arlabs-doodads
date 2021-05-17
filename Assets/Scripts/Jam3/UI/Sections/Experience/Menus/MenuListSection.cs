@@ -1,3 +1,23 @@
+//-----------------------------------------------------------------------
+// <copyright file="MenuListSection.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +28,9 @@ using DG.Tweening;
 
 namespace Jam3
 {
+    /// <summary>
+    /// Available play button states
+    /// </summary>
     public enum PlayButtonState
     {
         None = 0,
@@ -58,7 +81,6 @@ namespace Jam3
         private MenuItem[] itensList = null;
         private EventTrigger trigger = null;
 
-        //change to on enable
         void Awake()
         {
             if (!init)
@@ -67,7 +89,7 @@ namespace Jam3
 
                 if (ListContainer != null && ElementPrefab != null)
                 {
-                    //add interactive elements
+                    //add interactive elements to the menu
                     int items = ObjectManager.Instance.InteractiveElements.Length;
                     itensList = new MenuItem[items];
 
@@ -144,6 +166,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Detects the list scrolling
+        /// </summary>
         public void OnScroll()
         {
             for (int i = 0; i < itensList.Length; i++)
@@ -162,10 +187,11 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// List menu item selection
+        /// </summary>
         public void OnItemClick(int id)
         {
-            // AudioManager.Instance.PlayAudioClip("ObjectSelection");
-
             if (PlacementManager.Instance.HasHitPoint && PlacementManager.Instance.InSceneObjectsCount < PlacementManager.Instance.MaxObjectsInScene)
             {
                 ObjectManager.Instance.SpawnObject(id);
@@ -185,10 +211,11 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// The ball spawn button press
+        /// </summary>
         public void OnSpawnBallClick(int id)
         {
-            // AudioManager.Instance.PlayAudioClip("ObjectSelection");
-
             if (PlacementManager.Instance.HasHitPoint)
             {
                 ObjectManager.Instance.SpawnBall(0);
@@ -207,6 +234,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// The play button press
+        /// </summary>
         private void OnPlayClick()
         {
             AudioManager.Instance.PlayAudioClip("Play", MixerType.UI, false, true);
@@ -219,6 +249,9 @@ namespace Jam3
             PlayButton.GetComponent<RectTransform>().DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.3f).SetEase(Ease.OutBounce);
         }
 
+        /// <summary>
+        /// The play button press and hold
+        /// </summary>
         private void OnPlayDown()
         {
             AudioManager.Instance.PlayAudioClip("Hold", MixerType.UI, true);
@@ -229,12 +262,18 @@ namespace Jam3
             PlayButton.GetComponent<RectTransform>().DOScale(new Vector3(1.3f, 1.3f, 1.3f), 0.3f).SetEase(Ease.OutBounce);
         }
 
+        /// <summary>
+        /// The play button release
+        /// </summary>
         private void OnPlayUp()
         {
             // Debug.Log("up");
             // OnPlayClick();
         }
 
+        /// <summary>
+        /// The play again button press
+        /// </summary>
         private void OnReplayClick()
         {
             AudioManager.Instance.PlayAudioClip("Replay");
@@ -248,6 +287,9 @@ namespace Jam3
             SetPlayButtonState(PlayButtonState.Play);
         }
 
+        /// <summary>
+        /// Sets all states for the play button
+        /// </summary>
         public void SetPlayButtonState(PlayButtonState state)
         {
             currentPlayButtonState = state;
@@ -296,6 +338,9 @@ namespace Jam3
 
         bool canClick = true;
 
+        /// <summary>
+        /// The open menu button press
+        /// </summary>
         public void OnOpenClick()
         {
             AudioManager.Instance.PlayAudioClip("Caroulsel");
@@ -311,6 +356,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Called by the delegate when it's game over
+        /// </summary>
         private void HandleGameOver(bool isGameOver)
         {
             if (isGameOver)
@@ -323,6 +371,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Shows the results screen
+        /// </summary>
         private void ShowResults()
         {
             Open();
@@ -340,6 +391,9 @@ namespace Jam3
             MenuButton.gameObject.SetActive(false);
         }
 
+        /// <summary>
+        /// Hides the results screen
+        /// </summary>
         private void HideResults()
         {
             ResultsTable.SetActive(false);
@@ -353,6 +407,9 @@ namespace Jam3
             TitleText.text = OpenTitleString;
         }
 
+        /// <summary>
+        /// Opens the items list menu
+        /// </summary>
         public override void Open()
         {
             gameObject.SetActive(true);
@@ -398,6 +455,9 @@ namespace Jam3
             isOpen = true;
         }
 
+        /// <summary>
+        /// Closes the items list menu with no animation
+        /// </summary>
         public override void Close()
         {
             gameObject.SetActive(true);
@@ -428,6 +488,9 @@ namespace Jam3
             isOpen = false;
         }
 
+        /// <summary>
+        /// Closes the menu with tween animation
+        /// </summary>
         public void CloseWithAnimation()
         {
             GetComponent<RectTransform>().DOAnchorPosY(-360, 0.33f).SetEase(Ease.InOutSine).OnComplete(MenuAnimationCompleted);
@@ -440,12 +503,18 @@ namespace Jam3
             isOpen = false;
         }
 
+        /// <summary>
+        /// Hides the list menu
+        /// </summary>
         public override void Hide()
         {
             base.Hide();
             ItemList.SetActive(false);
         }
 
+        /// <summary>
+        /// Setup for the list menu when it's animation tween is complete
+        /// </summary>
         private void MenuAnimationCompleted()
         {
             if (isOpen)
@@ -469,6 +538,9 @@ namespace Jam3
             canClick = true;
         }
 
+        /// <summary>
+        /// Opens the menu and closes pop-ups
+        /// </summary>
         private void OpenMenuAndClosePopupAfterTimer()
         {
             PopUpManager.Instance.CloseAll(true);

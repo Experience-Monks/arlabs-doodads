@@ -1,17 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
 namespace Jam3.Util
 {
+    /// <summary>
+    /// Singleton.
+    /// </summary>
+    /// <seealso cref="MonoBehaviour" />
+    /// <typeparam name="T"></typeparam>
     public class Singleton<T> : MonoBehaviour where T : Component
     {
         private static T _instance;
+
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>
+        /// The instance.
+        /// </value>
         public static T Instance
         {
-            get
-            {
+            get {
                 if (_instance == null)
                 {
                     _instance = FindObjectOfType<T>();
@@ -26,6 +35,9 @@ namespace Jam3.Util
             }
         }
 
+        /// <summary>
+        /// Awake.
+        /// </summary>
         public virtual void Awake()
         {
             if (_instance == null)
@@ -46,10 +58,15 @@ namespace Jam3.Util
             }
         }
 
+        /// <summary>
+        /// Gets the is instantiated.
+        /// </summary>
+        /// <value>
+        /// The is instantiated.
+        /// </value>
         public static bool IsInstantiated
         {
-            get
-            {
+            get {
                 return _instance != null;
             }
         }

@@ -1,11 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="ARCharacterController.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using UnityEngine;
-using Jam3;
 
 namespace Jam3.AR
 {
-    // [ExecuteInEditMode]
+    /// <summary>
+    /// AR character controller (editor AR fallback fro debug/test).
+    /// </summary>
+    /// <seealso cref="MonoBehaviour" />
     public class ARCharacterController : MonoBehaviour
     {
         [HideInInspector]
@@ -43,6 +63,7 @@ namespace Jam3.AR
         public bool MouseInvertedY = false;
         public bool MouseInvertedX = false;
 
+        // Runtime variables
         private bool isDown = false;
         private bool moved = false;
 
@@ -56,7 +77,7 @@ namespace Jam3.AR
         private Vector2 initialHoldPosition = Vector2.zero;
         private Vector2 stickAnalogValue = Vector2.zero;
 
-        //Mouse Private
+        // Mouse Private
         private Vector2 mouseLook = Vector2.zero;
         private Vector2 smoothV = Vector2.zero;
         private Vector2 mouseVector = Vector2.zero;
@@ -69,7 +90,10 @@ namespace Jam3.AR
         private bool canTap = false;
         private bool canLookAt = false;
 
-        void Start()
+        /// <summary>
+        /// Start.
+        /// </summary>
+        private void Start()
         {
             mouseVector = new Vector2(0, 0);
             sensitivityVector = new Vector2(0, 0);
@@ -84,7 +108,10 @@ namespace Jam3.AR
             canTap = true;
         }
 
-        void Update()
+        /// <summary>
+        /// Update.
+        /// </summary>
+        private void Update()
         {
             canTap = true;
 
@@ -160,6 +187,9 @@ namespace Jam3.AR
             if (IsShooting) { }
         }
 
+        /// <summary>
+        /// Updates target position.
+        /// </summary>
         private void UpdateTargetPosition()
         {
             currentMovePosition = Vector3.SmoothDamp(currentMovePosition, targetMovePosition, ref velocity, MovementSmoothFactor);
@@ -168,6 +198,10 @@ namespace Jam3.AR
             currentMovePosition.z = float.IsNaN(currentMovePosition.z) ? 0.0f : currentMovePosition.z;
         }
 
+
+        /// <summary>
+        /// Looks at movement.
+        /// </summary>
         private void LookAtMovement()
         {
             mouseVector.x = Input.GetAxisRaw("Mouse X");
@@ -189,6 +223,9 @@ namespace Jam3.AR
                 lookAtXObject.transform.localRotation = Quaternion.Euler(0, -mouseLook.x * mouseDirection.x, 0);
         }
 
+        /// <summary>
+        /// Characters movement.
+        /// </summary>
         private void CharacterMovement()
         {
             if (movementObject)
@@ -199,6 +236,10 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Hold.
+        /// </summary>
+        /// <param name="position">The position.</param>
         private void Hold(Vector2 position)
         {
             initialHoldPosition = position;
@@ -207,6 +248,9 @@ namespace Jam3.AR
                 IsShooting = true;
         }
 
+        /// <summary>
+        /// Release.
+        /// </summary>
         private void Release()
         {
             initialHoldPosition.x = 0;

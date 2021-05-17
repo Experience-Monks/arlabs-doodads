@@ -4,12 +4,19 @@ using UnityEngine;
 
 namespace Jam3
 {
+    /// <summary>
+    /// Mesh optmizer.
+    /// </summary>
+    /// <seealso cref="MonoBehaviour" />
     public class MeshOptmizer : MonoBehaviour
     {
         public MeshFilter MeshObject = null;
         public MeshCollider MeshCollider = null;
 
-        void Start()
+        /// <summary>
+        /// Start.
+        /// </summary>
+        private void Start()
         {
             if (MeshObject != null)
             {

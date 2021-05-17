@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------
-// <copyright file="ScreenSpaceDepthMeshGenerator.cs" company="Google LLC">
+// <copyright file="ARDepthMeshPreview.cs" company="Jam3 Inc">
 //
-// Copyright 2020 Google LLC. All Rights Reserved.
+// Copyright 2021 Jam3 Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -75,6 +75,11 @@ namespace Jam3.AR
             transform.localScale = Vector3.one;
         }
 
+        /// <summary>
+        /// Generates triangles.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
         private static int[] GenerateTriangles(int width, int height)
         {
             int[] indices = new int[(height - 1) * (width - 1) * 6];
@@ -112,6 +117,9 @@ namespace Jam3.AR
             return indices;
         }
 
+        /// <summary>
+        /// Initializes mesh.
+        /// </summary>
         private void InitializeMesh()
         {
             // Create template vertices.
@@ -166,6 +174,9 @@ namespace Jam3.AR
             m_Initialized = true;
         }
 
+        /// <summary>
+        /// Update.
+        /// </summary>
         private void Update()
         {
             if (!m_FreezeMesh)

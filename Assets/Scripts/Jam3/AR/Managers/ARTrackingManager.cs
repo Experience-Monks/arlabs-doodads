@@ -1,9 +1,28 @@
+//-----------------------------------------------------------------------
+// <copyright file="ARTrackingManager.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+
 using Jam3.Util;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -11,7 +30,9 @@ using UnityEditor;
 
 namespace Jam3.AR
 {
-    // how plane tracking is going, if we have detected large enough planes
+    /// <summary>
+    /// How plane tracking is going, if we have detected large enough planes
+    /// </summary>
     public enum PlaneTrackingState
     {
         Disabled,
@@ -19,14 +40,18 @@ namespace Jam3.AR
         Complete
     }
 
-    // how tracking is going, if the phone is tracking at all
+    /// <summary>
+    /// The State how tracking is going, if the phone is tracking at all.
+    /// </summary>
     public enum SessionState
     {
         NotTracking,
         Tracking
     }
 
-    // a combination of both PlaneTrackingState and SessionState
+    /// <summary>
+    /// The state of tracking, a combination of both PlaneTrackingState and SessionState.
+    /// </summary>
     public enum TrackingState
     {
         NotTracking,
@@ -43,7 +68,25 @@ namespace Jam3.AR
         public Action<bool> ShouldBeTrackingUpdated;
         public Action<PlaneTrackingState> PlaneTrackingUpdated;
 
+        [Header("Calibration Parameters")]
+        [SerializeField] private int minHorizontalPlanes = 1;
+        [SerializeField] private int minVerticalPlanes = 0;
+        [SerializeField] private float minGroundPlaneArea = 2f; // in square meters
+
+        // Runtime Variables
+        private bool shouldBeTracking = false;
+        private bool isDebugging;
+        private PlaneManager planeManager = default;
         private PlaneTrackingState planeTrackingState = PlaneTrackingState.Disabled;
+
+        /// <summary>
+        /// Gets the is debugging.
+        /// </summary>
+        /// <value>
+        /// The is debugging.
+        /// </value>
+        public bool IsDebugging { get => isDebugging; }
+
         public PlaneTrackingState PlaneTrackingState
         {
             get {
@@ -112,23 +155,20 @@ namespace Jam3.AR
                 ShouldBeTrackingUpdated?.Invoke(shouldBeTracking);
             }
         }
-        private bool shouldBeTracking = false;
 
-        [Header("Calibration Parameters")]
-        [SerializeField] private int minHorizontalPlanes = 1;
-        [SerializeField] private int minVerticalPlanes = 0;
-        [SerializeField] private float minGroundPlaneArea = 2f; // in square meters
-        private bool isDebugging;
-        public bool IsDebugging { get => isDebugging; }
-
-        private PlaneManager planeManager = default;
-
-        void Start()
+        /// <summary>
+        /// Start.
+        /// </summary>
+        private void Start()
         {
             // start the calibration sequence
             PlaneTrackingState = PlaneTrackingState.Incomplete;
         }
 
+
+        /// <summary>
+        /// Ons enable.
+        /// </summary>
         private void OnEnable()
         {
             // cache the plane manager instance
@@ -138,6 +178,9 @@ namespace Jam3.AR
             ARSession.stateChanged += OnSessionStateChanged;
         }
 
+        /// <summary>
+        /// Ons disable.
+        /// </summary>
         private void OnDisable()
         {
             planeManager.PlanesUpdated -= OnPlanesUpdated;
@@ -217,6 +260,12 @@ namespace Jam3.AR
         }
 
 #if UNITY_EDITOR
+        /// <summary>
+        /// Gets the largest ground plane area.
+        /// </summary>
+        /// <value>
+        /// The largest ground plane area.
+        /// </value>
         public void DebugTracking(NotTrackingReason reason, TrackingState state = TrackingState.NotTracking)
         {
             isDebugging = true;
@@ -250,6 +299,9 @@ namespace Jam3.AR
 #if UNITY_EDITOR
 
     [CustomEditor(typeof(ARTrackingManager))]
+    /// <summary>
+    /// Editor class (Debug)
+    /// </summary>
     public class ObjectBuilderEditor : Editor
     {
         public override void OnInspectorGUI()

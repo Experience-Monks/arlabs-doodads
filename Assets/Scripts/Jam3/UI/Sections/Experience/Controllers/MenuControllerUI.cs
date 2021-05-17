@@ -1,3 +1,23 @@
+//-----------------------------------------------------------------------
+// <copyright file="MenuControllerUI.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using UnityEngine;
 
 namespace Jam3
@@ -19,6 +39,9 @@ namespace Jam3
 
         private bool isFirstOpen = true;
 
+        /// <summary>
+        /// Resets the ball
+        /// </summary>
         public void ResetBall()
         {
             if (MenuList != null)
@@ -30,6 +53,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Sets the textures menu
+        /// </summary>
         public void SetMenuPlacementTextures(int objectID)
         {
             if (MenuPlacement != null)
@@ -40,6 +66,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Disables the textures menu
+        /// </summary>
         public void DisablePlacementTextures()
         {
             if (MenuPlacement != null)
@@ -49,11 +78,17 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Sets the items list menu
+        /// </summary>
         public void SetMenuList()
         {
             SetMenu(MenuType.MenuList, true);
         }
 
+        /// <summary>
+        /// Sets the placement menu
+        /// </summary>
         public void SetMenuPlacement(int id)
         {
             if (id == -1)
@@ -64,6 +99,9 @@ namespace Jam3
             SetMenu(MenuType.MenuPlacement, true, true);
         }
 
+        /// <summary>
+        /// Sets the transform menu
+        /// </summary>
         public void SetMenuTransform(int id)
         {
             if (id == -1)
@@ -74,11 +112,17 @@ namespace Jam3
             SetMenu(MenuType.MenuPlacement, true, true);
         }
 
+        /// <summary>
+        /// Sets the side menu
+        /// </summary>
         public void SetMenuSide()
         {
             SetMenu(MenuType.MenuSide, false);
         }
 
+        /// <summary>
+        /// Sets the app's menus
+        /// </summary>
         private void SetMenu(MenuType type, bool useTopMenu = false, bool useSideMenu = false)
         {
             if (MenuList != null)

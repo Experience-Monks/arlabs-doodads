@@ -1,9 +1,32 @@
+//-----------------------------------------------------------------------
+// <copyright file="AudioController.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 
 using UnityEngine;
 
 namespace Jam3
 {
+    /// <summary>
+    /// Audio material.
+    /// </summary>
     public enum AudioMaterial
     {
         None = -1,
@@ -13,6 +36,9 @@ namespace Jam3
         Wood = 3
     }
 
+    /// <summary>
+    /// Audio material item.
+    /// </summary>
     [Serializable]
     public class AudioMaterialItem
     {
@@ -20,6 +46,10 @@ namespace Jam3
         public AudioClip Clip = null;
     }
 
+    /// <summary>
+    /// Audio controller.
+    /// </summary>
+    /// <seealso cref="MonoBehaviour" />
     [RequireComponent(typeof(AudioSource))]
     public class AudioController : MonoBehaviour
     {
@@ -42,13 +72,17 @@ namespace Jam3
         [Range(0.1f, 2f)]
         public float AudioVolumeMax = 1f;
 
+        // Runtime varilables
         private AudioSource m_audioSource = null;
         private AudioMaterial m_currentAudioMaterial = AudioMaterial.None;
 
         private bool m_canPlayAudio = false;
         private float m_audioAmount = 0.0f;
 
-        void Start()
+        /// <summary>
+        /// Start.
+        /// </summary>
+        private void Start()
         {
             m_audioSource = GetComponent<AudioSource>();
             m_audioSource.loop = true;
@@ -63,6 +97,10 @@ namespace Jam3
             SetAudioMaterial(AudioMaterial.Default);
         }
 
+        /// <summary>
+        /// Sets audio material.
+        /// </summary>
+        /// <param name="material">The material.</param>
         public void SetAudioMaterial(AudioMaterial material = AudioMaterial.Default)
         {
             if (material != m_currentAudioMaterial)
@@ -75,7 +113,10 @@ namespace Jam3
             }
         }
 
-        void Update()
+        /// <summary>
+        /// Update.
+        /// </summary>
+        private void Update()
         {
             if (m_canPlayAudio && m_audioAmount > 0f)
             {
@@ -92,24 +133,38 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Plays hit.
+        /// </summary>
         public void PlayHit()
         {
             if (HitAudioSource != null)
                 HitAudioSource.Play();
         }
 
+        /// <summary>
+        /// Audio controller.
+        /// </summary>
+        /// <seealso cref="MonoBehaviour" />
         public void AudioPlay()
         {
             if (!m_audioSource.isPlaying)
                 m_audioSource.Play();
         }
 
+        /// <summary>
+        /// Audio pause.
+        /// </summary>
         public void AudioPause()
         {
             if (m_audioSource.isPlaying)
                 m_audioSource.Pause();
         }
 
+        /// <summary>
+        /// Gets audio by name.
+        /// </summary>
+        /// <param name="material">The material.</param>
         private AudioClip GetAudioByName(AudioMaterial material)
         {
             AudioClip clip = null;

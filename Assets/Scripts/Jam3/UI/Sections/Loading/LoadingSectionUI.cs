@@ -1,3 +1,23 @@
+//-----------------------------------------------------------------------
+// <copyright file="LoadingSectionUI.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 using System.Collections;
 
@@ -44,6 +64,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Waits a little bit as the video file loads
+        /// </summary>
         private IEnumerator WaitAndShowVideo()
         {
             isVideoPlaying = true;
@@ -53,6 +76,9 @@ namespace Jam3
             LogoVideoTexture.color = new Color(1, 1, 1, 1);
         }
 
+        /// <summary>
+        /// Starts the section flow
+        /// </summary>
         public void StartFlow(Action onComplete)
         {
             OnComplete = onComplete;
@@ -61,6 +87,9 @@ namespace Jam3
             StartCoroutine("Flow");
         }
 
+        /// <summary>
+        /// The section flow
+        /// </summary>
         private IEnumerator Flow()
         {
             titleTextInitialColor = new Color(titleText.color.r, titleText.color.g, titleText.color.b, 0);
@@ -75,6 +104,9 @@ namespace Jam3
             AnimateEnterTitle();
         }
 
+        /// <summary>
+        /// Animates the bottom tittle
+        /// </summary>
         private void AnimateEnterTitle()
         {
             titleTransform.DOAnchorPosY(340.0f, animationDuration).SetEase(Ease.OutCirc).OnComplete(AnimateExitTitle).SetDelay(0.5f);
@@ -83,11 +115,17 @@ namespace Jam3
             titleLogo.DOColor(new Color(titleLogo.color.r, titleLogo.color.g, titleLogo.color.b, 1.0f), animationDuration).SetDelay(0.5f);
         }
 
+        /// <summary>
+        /// Animates the bottom tittle exit
+        /// </summary>
         private void AnimateExitTitle()
         {
             titleTransform.DOAnchorPosY(340.0f, animationDuration).OnComplete(CompleteFlow).SetDelay(exitAnimationDelay);
         }
 
+        /// <summary>
+        /// Completes the section flow
+        /// </summary>
         private void CompleteFlow()
         {
             OnComplete();

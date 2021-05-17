@@ -1,3 +1,23 @@
+//-----------------------------------------------------------------------
+// <copyright file="ScanSectionUI.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 using System.Collections;
 
@@ -83,6 +103,9 @@ namespace Jam3
         // private
         private Image[] arrowsImages;
 
+        /// <summary>
+        /// Starts the section flow
+        /// </summary>
         public void StartFlow(Action onStart, Action onComplete)
         {
             Reset();
@@ -110,18 +133,27 @@ namespace Jam3
             StartScan();
         }
 
+        /// <summary>
+        /// Updates the depth image texture
+        /// </summary>
         public void UpdateDepthImage(Texture2D texture)
         {
             if (DepthImage != null)
                 DepthImage.texture = texture;
         }
 
+        /// <summary>
+        /// Updates the confidence image texture
+        /// </summary>
         public void UpdateConfidenceImage(Texture2D texture)
         {
             if (ConfidenceImage != null)
                 ConfidenceImage.texture = texture;
         }
 
+        /// <summary>
+        /// Starts the scan process
+        /// </summary>
         public void StartScan()
         {
             ShowStartButton(false);
@@ -135,6 +167,9 @@ namespace Jam3
                 OnStart();
         }
 
+        /// <summary>
+        /// Ends the scan process
+        /// </summary>
         public void EndScan()
         {
             ShowDebugPanel(false);
@@ -146,6 +181,9 @@ namespace Jam3
                 Complete();
         }
 
+        /// <summary>
+        /// Completes the scan process
+        /// </summary>
         public void Complete()
         {
             ShowDebugPanel(false);
@@ -156,6 +194,9 @@ namespace Jam3
             StartCoroutine(WaitAndComplete());
         }
 
+        /// <summary>
+        /// Wait a little bit to show some info and completes the section
+        /// </summary>
         private IEnumerator WaitAndComplete()
         {
             yield return new WaitForSeconds(2f);
@@ -164,18 +205,27 @@ namespace Jam3
                 OnComplete();
         }
 
+        /// <summary>
+        /// Shows the debug panel
+        /// </summary>
         public void ShowDebugPanel(bool show)
         {
             if (DebugUI != null)
                 DebugUI.SetActive(show);
         }
 
+        /// <summary>
+        /// Sets the debug text
+        /// </summary>
         public void SetDebugText(string text)
         {
             if (ValueUI != null)
                 ValueUI.text = text;
         }
 
+        /// <summary>
+        /// Sets as scan ready
+        /// </summary>
         public void SetReady(bool isReady)
         {
             scanReady = isReady;
@@ -188,6 +238,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Resets the scan process
+        /// </summary>
         public void Reset()
         {
             ShowStartTip();
@@ -199,12 +252,18 @@ namespace Jam3
             ShowDebugPanel(false);
         }
 
+        /// <summary>
+        /// Shows the start button
+        /// </summary>
         public void ShowStartButton(bool show)
         {
             if (StartButton != null)
                 StartButton.gameObject.SetActive(show);
         }
 
+        /// <summary>
+        /// Shows the complete button
+        /// </summary>
         public void ShowCompleteButton(bool show)
         {
             if (CompleteButton != null)
@@ -216,6 +275,9 @@ namespace Jam3
             SetScanningStatusComplete();
         }
 
+        /// <summary>
+        /// Shows the scan tips
+        /// </summary>
         private void ShowScanTip()
         {
             scanTip.SetActive(true);
@@ -242,6 +304,9 @@ namespace Jam3
             AnimateScanTip();
         }
 
+        /// <summary>
+        /// Animates the scan tips
+        /// </summary>
         private void AnimateScanTip()
         {
             arrowsTransform.DOKill();
@@ -251,11 +316,17 @@ namespace Jam3
             phoneTransform.DOAnchorPosX(20.0f, 1.3f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine).SetDelay(0.25f);
         }
 
+        //// <summary>
+        /// Hides the scan tips
+        /// </summary>
         private void HideScanTip()
         {
             scanTip.SetActive(false);
         }
 
+        /// <summary>
+        /// Shows the scan tips
+        /// </summary>
         private void ShowStartTip()
         {
             startTip.SetActive(true);
@@ -269,17 +340,26 @@ namespace Jam3
             AnimateStartTip();
         }
 
+        /// <summary>
+        /// Animates the start tips
+        /// </summary>
         private void AnimateStartTip()
         {
             startTipTarget.DOKill();
             startTipTarget.DOAnchorPosX(30.0f, 1.3f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
         }
 
+        /// <summary>
+        /// Hides the start tips
+        /// </summary>
         private void HideStartTip()
         {
             startTip.SetActive(false);
         }
 
+        /// <summary>
+        /// Shows scanning status
+        /// </summary>
         public void ShowScanningStatus(bool canShow)
         {
             if (canShow)
@@ -296,12 +376,18 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Sets scanning status to complete
+        /// </summary>
         public void SetScanningStatusComplete()
         {
             ScanningText.DOKill();
             ScanningText.color = new Color(1, 1, 1, 1);
         }
 
+        /// <summary>
+        /// Resets the scanning steps
+        /// </summary>
         public void ResetScanningSteps()
         {
             step1RealtimeAmount = 0.0f;
@@ -344,6 +430,9 @@ namespace Jam3
             step3TotalAmountBar.fillAmount = 0;
         }
 
+        /// <summary>
+        /// Adds a complete scanning step
+        /// </summary>
         public void AddCompleteScanningStep()
         {
             int maxSteps = 3;
@@ -379,6 +468,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Sets the depth confidence status numbers to UI
+        /// </summary>
         public void DepthConfidenceStatus(float statusNumber, float threshold)
         {
             float statusRealtime = (statusNumber / threshold);

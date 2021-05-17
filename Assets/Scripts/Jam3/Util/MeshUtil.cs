@@ -3,19 +3,34 @@ using System.Text;
 
 namespace Jam3.Util
 {
+    /// <summary>
+    /// Mesh util.
+    /// </summary>
     public class MeshUtil
     {
         private static int StartIndex = 0;
 
+        /// <summary>
+        /// Start.
+        /// </summary>
         public static void Start()
         {
             StartIndex = 0;
         }
+
+        /// <summary>
+        /// End.
+        /// </summary>
         public static void End()
         {
             StartIndex = 0;
         }
 
+        /// <summary>
+        /// Meshes to string.
+        /// </summary>
+        /// <param name="mf">The mf.</param>
+        /// <param name="t">The t.</param>
         public static string MeshToString(MeshFilter mf, Transform t)
         {
             Vector3 s = t.localScale;

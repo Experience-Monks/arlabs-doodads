@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Text;
 using System.IO;
-using Jam3.Util;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -9,10 +8,18 @@ using UnityEditor;
 
 namespace Jam3.Util
 {
+    /// <summary>
+    /// Runtime obj exporter.
+    /// </summary>
+    /// <seealso cref="MonoBehaviour" />
     public class RuntimeObjExporter : MonoBehaviour
     {
         public string RootObjectName = "BackgroundMeshContainer";
 
+        /// <summary>
+        /// Dos export.
+        /// </summary>
+        /// <param name="makeSubmeshes">The make submeshes.</param>
         public void DoExport(bool makeSubmeshes)
         {
             GameObject rootObject = GameObject.Find(RootObjectName);
@@ -50,6 +57,11 @@ namespace Jam3.Util
             }
         }
 
+        /// <summary>
+        /// Processes transform.
+        /// </summary>
+        /// <param name="t">The t.</param>
+        /// <param name="makeSubmeshes">The make submeshes.</param>
         static string processTransform(Transform t, bool makeSubmeshes)
         {
             StringBuilder meshString = new StringBuilder();
@@ -77,6 +89,11 @@ namespace Jam3.Util
             return meshString.ToString();
         }
 
+        /// <summary>
+        /// Writes to file.
+        /// </summary>
+        /// <param name="s">The s.</param>
+        /// <param name="filename">The filename.</param>
         static void WriteToFile(string s, string filename)
         {
             using (StreamWriter sw = new StreamWriter(filename))

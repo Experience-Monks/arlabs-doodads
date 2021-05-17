@@ -1,3 +1,23 @@
+//-----------------------------------------------------------------------
+// <copyright file="MenuPlacementSection.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -34,6 +54,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Sets the placement section when enabling it
+        /// </summary>
         public void SetEnable(bool value)
         {
             if (MenuContainer != null)
@@ -44,6 +67,9 @@ namespace Jam3
             ReorderTextureMenu();
         }
 
+        /// <summary>
+        /// Opens the menu with tween animation
+        /// </summary>
         private void SetTexturesMenuOpen(bool setOpen, bool animated = true)
         {
             isTexturesMenuOpen = setOpen;
@@ -86,6 +112,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Reorders the textures menu items
+        /// </summary>
         private void ReorderTextureMenu()
         {
             for (int i = 0; i < ImageOptions.Length; i++)
@@ -101,6 +130,9 @@ namespace Jam3
                 ImageOptions[selectedObject.Customization.ColorId].transform.SetAsLastSibling();
         }
 
+        /// <summary>
+        /// Sets items textures
+        /// </summary>
         public void SetTextures(int objectID)
         {
             if (ImageOptions != null)
@@ -118,6 +150,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Confirms item placement
+        /// </summary>
         public void PlaceObject()
         {
             AudioManager.Instance.PlayAudioClip("ObjectSelection");
@@ -135,6 +170,9 @@ namespace Jam3
             GameManager.Instance.GameOver(false);
         }
 
+        /// <summary>
+        /// Deletes item from scene
+        /// </summary>
         public void CancelPlacement()
         {
             AudioManager.Instance.PlayAudioClip("Reset");
@@ -155,6 +193,9 @@ namespace Jam3
             GameManager.Instance.GameOver(false);
         }
 
+        /// <summary>
+        /// Updates the top objects counter
+        /// </summary>
         private void UpdateObjectsCounter()
         {
             if (PlacementManager.Instance.InSceneObjectsCount > 0)
@@ -172,11 +213,17 @@ namespace Jam3
             CounterText.SetText(counterInitialString, PlacementManager.Instance.InSceneObjectsCount, secondCountNumber);
         }
 
+        /// <summary>
+        /// Hides the top objects counter
+        /// </summary>
         public void HideObjectsCounter()
         {
             ObjectsCounter.SetActive(false);
         }
 
+        /// <summary>
+        /// Changes item texture
+        /// </summary>
         public void ChangeTexture(int id)
         {
             AudioManager.Instance.PlayAudioClip("ObjectSelection");
@@ -200,6 +247,9 @@ namespace Jam3
             SetTexturesMenuOpen(false);
         }
 
+        /// <summary>
+        /// Changes the ball trigger direction in some degrees for testing purposes.
+        /// </summary>
         public void ChangeBallTriggerDirection()
         {
             if (SelectionManager.Instance.SelectedObject != null)

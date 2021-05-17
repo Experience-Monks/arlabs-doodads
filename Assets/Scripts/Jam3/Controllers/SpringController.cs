@@ -1,13 +1,36 @@
+//-----------------------------------------------------------------------
+// <copyright file="SpringController.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using UnityEngine;
 using DG.Tweening;
 
 namespace Jam3
 {
+
+    /// <summary>
+    /// Spring controller.
+    /// </summary>
+    /// <seealso cref="MonoBehaviour" />
     [RequireComponent(typeof(BoxCollider))]
     public class SpringController : MonoBehaviour
     {
-        public bool IsHolding { get => holding; }
-
         public bool UseSpringAsset = true;
 
         [Header("Ground Refference")]
@@ -48,6 +71,7 @@ namespace Jam3
         [Range(0.0f, 1f)]
         public float SpringTension = 0.0f;
 
+        // Runtime varilables
         private BoxCollider springCollider = null;
         private float topIniPositionX = 0.0f;
 
@@ -64,7 +88,15 @@ namespace Jam3
 
         private GameObject ballObject = null;
 
-        void Start()
+        /// <summary>
+        /// Gets if the spring is holding.
+        /// </summary>
+        public bool IsHolding { get => holding; }
+
+        /// <summary>
+        /// Start.
+        /// </summary>
+        private void Start()
         {
             springCollider = GetComponent<BoxCollider>();
 
@@ -84,7 +116,10 @@ namespace Jam3
             SetColliderSize();
         }
 
-        void Update()
+        /// <summary>
+        /// Update.
+        /// </summary>
+        private void Update()
         {
             if (holding)
             {
@@ -102,7 +137,10 @@ namespace Jam3
             }
         }
 
-        void LateUpdate()
+        /// <summary>
+        /// Lates update.
+        /// </summary>
+        private void LateUpdate()
         {
             if (UseSpringAsset)
             {
@@ -114,7 +152,11 @@ namespace Jam3
             }
         }
 
-        void OnTriggerEnter(Collider other)
+        /// <summary>
+        /// Ons trigger enter.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        private void OnTriggerEnter(Collider other)
         {
             if (UseSpringAsset)
             {
@@ -133,7 +175,11 @@ namespace Jam3
             }
         }
 
-        void OnTriggerExit(Collider other)
+        /// <summary>
+        /// Ons trigger exit.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        private void OnTriggerExit(Collider other)
         {
             if (UseSpringAsset)
             {
@@ -145,6 +191,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Reset.
+        /// </summary>
         public void Reset()
         {
             springTension = 0.0f;
@@ -162,6 +211,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Hold.
+        /// </summary>
         public void Hold()
         {
             if (!holding)
@@ -171,6 +223,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Release.
+        /// </summary>
         public void Release()
         {
             holding = false;
@@ -184,6 +239,9 @@ namespace Jam3
             SpringTension = 0.0f;
         }
 
+        /// <summary>
+        /// Animates release.
+        /// </summary>
         public void AnimateRelease()
         {
             if (!animating)
@@ -204,6 +262,10 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Sets target force.
+        /// </summary>
+        /// <param name="target">The target.</param>
         private void SetTargetForce(Collider target)
         {
             if (target != null)
@@ -216,6 +278,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Sets collider size.
+        /// </summary>
         private void SetColliderSize()
         {
             if (UseSpringAsset && SpringTop != null && SpringBottom != null)

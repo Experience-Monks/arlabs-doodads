@@ -2,8 +2,17 @@ using UnityEngine;
 
 namespace Jam3.Util
 {
+    /// <summary>
+    /// Math util.
+    /// </summary>
     public class MathUtil
     {
+        /// <summary>
+        /// Spring.
+        /// </summary>
+        /// <param name="from">The from.</param>
+        /// <param name="to">The to.</param>
+        /// <param name="time">The time.</param>
         public static float Spring(float from, float to, float time)
         {
             time = Mathf.Clamp01(time);
@@ -11,6 +20,13 @@ namespace Jam3.Util
             return from + (to - from) * time;
         }
 
+
+        /// <summary>
+        /// Gets the coin flip.
+        /// </summary>
+        /// <value>
+        /// The coin flip.
+        /// </value>
         public static bool CoinFlip
         {
             get {

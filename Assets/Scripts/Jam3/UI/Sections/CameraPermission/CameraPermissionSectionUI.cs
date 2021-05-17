@@ -1,3 +1,23 @@
+//-----------------------------------------------------------------------
+// <copyright file="CameraPermissionSectionUI.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +34,9 @@ namespace Jam3
 
         public GameObject Bottom;
 
+        /// <summary>
+        /// Shows the camera permission screen
+        /// </summary>
         public void ShowPermissionScreen(Action onComplete)
         {
             Bottom.SetActive(false);
@@ -22,7 +45,9 @@ namespace Jam3
             StartCoroutine(WaitAndShowBottom());
         }
 
-        // called from button
+        /// <summary>
+        /// Asks the camera permission by pressing the button
+        /// </summary>
         public void TurnOnCameraPressed()
         {
             if (Application.isEditor)
@@ -45,6 +70,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Wait and shows the UI permission button
+        /// </summary>
         private IEnumerator WaitAndShowBottom()
         {
             yield return new WaitForSeconds(2f);
@@ -52,6 +80,9 @@ namespace Jam3
             Bottom.SetActive(true);
         }
 
+        /// <summary>
+        /// Redirects user to app config 
+        /// </summary>
         private void RedirectToAppConfig()
         {
             try

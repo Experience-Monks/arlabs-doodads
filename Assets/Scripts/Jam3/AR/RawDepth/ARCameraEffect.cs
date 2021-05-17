@@ -1,10 +1,33 @@
+//-----------------------------------------------------------------------
+// <copyright file="ARCameraEffect.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.XR.ARFoundation;
-using Jam3;
 
 namespace Jam3.AR
 {
+    /// <summary>
+    /// A r camera effect.
+    /// </summary>
+    /// <seealso cref="MonoBehaviour" />
     public class ARCameraEffect : MonoBehaviour
     {
         public bool EffectReady { get { return m_effectReady; } set { m_effectReady = value; } }
@@ -25,6 +48,7 @@ namespace Jam3.AR
         public float TriangleConnectivityCutOff = 5.0f;
         public Texture2D MaterialTexture = null;
 
+        // Runtime static names
         private static readonly string k_RawDepthTexturePropertyName = "_RawDepthTexture";
         private static readonly string k_DepthTexturePropertyName = "_DepthTexture";
         private static readonly string k_ConfidenceTexturePropertyName = "_ConfidenceTexture";
@@ -32,6 +56,7 @@ namespace Jam3.AR
         private static readonly string k_BackgroundTexturePropertyName = "_BackgroundTexture";
         private static readonly string k_VertexModelTransformPropertyName = "_VertexModelTransform";
 
+        // Runtime Variables
         private Camera m_camera;
         private Material m_effectMaterial;
         private CommandBuffer m_commandBuffer;
@@ -41,7 +66,10 @@ namespace Jam3.AR
         private bool m_isOverMesh = false;
         private float m_depthConfidenceAverage = 0.0f;
 
-        void Awake()
+        /// <summary>
+        /// Awake.
+        /// </summary>
+        private void Awake()
         {
             if (EffectShader != null)
                 m_effectMaterial = new Material(EffectShader);
@@ -51,7 +79,10 @@ namespace Jam3.AR
             m_commandBuffer = new CommandBuffer { name = "Camera texture" };
         }
 
-        void Start()
+        /// <summary>
+        /// Start.
+        /// </summary>
+        private void Start()
         {
             var backgroundRenderer = FindObjectOfType<ARCameraBackground>();
             if (backgroundRenderer == null)
@@ -85,6 +116,9 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Initializes effect.
+        /// </summary>
         private void InitializeEffect()
         {
             if (m_effectMaterial != null)
@@ -110,6 +144,9 @@ namespace Jam3.AR
             m_Initialized = true;
         }
 
+        /// <summary>
+        /// Update.
+        /// </summary>
         private void Update()
         {
             if (m_Initialized)
@@ -131,18 +168,29 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// On enable.
+        /// </summary>
         private void OnEnable()
         {
             if (m_commandBuffer != null)
                 m_camera.AddCommandBuffer(CameraEvent.BeforeForwardOpaque, m_commandBuffer);
         }
 
+        /// <summary>
+        /// On disable.
+        /// </summary>
         private void OnDisable()
         {
             if (m_commandBuffer != null)
                 m_camera.RemoveCommandBuffer(CameraEvent.BeforeForwardOpaque, m_commandBuffer);
         }
 
+        /// <summary>
+        /// On render image.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="destination">The destination.</param>
         private void OnRenderImage(RenderTexture source, RenderTexture destination)
         {
             if (RenderEffect && m_Initialized && m_commandBuffer != null && m_effectMaterial != null)

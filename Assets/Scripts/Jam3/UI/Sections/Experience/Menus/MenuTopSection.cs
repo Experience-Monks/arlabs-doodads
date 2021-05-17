@@ -1,3 +1,23 @@
+//-----------------------------------------------------------------------
+// <copyright file="MenuTopSection.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
@@ -42,6 +62,9 @@ namespace Jam3
             UnregisterCallbacks();
         }
 
+        /// <summary>
+        /// Called by the delegate when selecting an object
+        /// </summary>mmary>
         private void HandleSelectionActive(bool isSelecting, ARObject selectedObject)
         {
             if (PlacementManager.Instance.InSceneObjectsCount < 1)
@@ -56,6 +79,9 @@ namespace Jam3
 
         }
 
+        /// <summary>
+        /// Called by the delegate when it's in play mode
+        /// </summary>
         private void HandlePlay(bool isPlaying)
         {
             if (PlacementManager.Instance.InSceneObjectsCount < 1)
@@ -71,6 +97,9 @@ namespace Jam3
                 PopUpManager.Instance.CloseAll();
         }
 
+        /// <summary>
+        /// Called by the delegate when it's game over
+        /// </summary>
         private void HandleGameOver(bool isGameOver)
         {
             if (PlacementManager.Instance.InSceneObjectsCount < 1)
@@ -83,6 +112,9 @@ namespace Jam3
             }
         }
 
+        /// <summary>
+        /// Prompts the clear scene confirmation menu
+        /// </summary>
         public void PromptClearConfirmation()
         {
             AudioManager.Instance.PlayAudioClip("ObjectSelection");
@@ -94,6 +126,9 @@ namespace Jam3
             resetButton.SetActive(false);
         }
 
+        /// <summary>
+        /// Prompts the reset confirmation menu
+        /// </summary>
         public void PromptResetConfirmation()
         {
             AudioManager.Instance.PlayAudioClip("ObjectSelection");
@@ -105,6 +140,9 @@ namespace Jam3
             resetButton.SetActive(false);
         }
 
+        /// <summary>
+        /// Button press for clear scene confirmation
+        /// </summary>
         public void OnClearGameClick()
         {
             AudioManager.Instance.PlayAudioClip("Reset");
@@ -118,6 +156,9 @@ namespace Jam3
             resetButton.SetActive(true);
         }
 
+        /// <summary>
+        /// Button press for restart cancelation
+        /// </summary>
         public void CancelRestart()
         {
             AudioManager.Instance.PlayAudioClip("HelpClose");
@@ -132,6 +173,9 @@ namespace Jam3
 
         }
 
+        /// <summary>
+        /// Button press for reset confirmation
+        /// </summary>
         public void OnRestartGameClick()
         {
             AudioManager.Instance.PlayAudioClip("Reset");
@@ -143,7 +187,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Registers the callback.
+        /// Registers the callbacks.
         /// </summary>
         private void RegisterCallbacks()
         {
@@ -153,7 +197,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Unregisters the callback.
+        /// Unregisters the callbacks.
         /// </summary>
         private void UnregisterCallbacks()
         {

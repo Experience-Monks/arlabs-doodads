@@ -1,3 +1,23 @@
+//-----------------------------------------------------------------------
+// <copyright file="ARCameraInfo.cs" company="Jam3 Inc">
+//
+// Copyright 2021 Jam3 Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// </copyright>
+//-----------------------------------------------------------------------
+
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -6,6 +26,10 @@ using Google.XR.ARCoreExtensions;
 
 namespace Jam3.AR
 {
+    /// <summary>
+    /// A r camera info.
+    /// </summary>
+    /// <seealso cref="MonoBehaviour" />
     public class ARCameraInfo : MonoBehaviour
     {
         public ARCameraManager CameraManager;
@@ -22,6 +46,7 @@ namespace Jam3.AR
         const string k_DisplayRotationPerFrameName = "_DisplayRotationPerFrame";
         static readonly int k_DisplayRotationPerFrameId = Shader.PropertyToID(k_DisplayRotationPerFrameName);
 
+        // Runtime varilables
         private static Texture2D s_ConfidenceTexture;
         private static Texture2D s_DepthTexture;
         private static Texture2D s_RawDepthTexture;
@@ -34,6 +59,9 @@ namespace Jam3.AR
         private static XRCameraIntrinsics s_CameraIntrinsics = default;
         private static bool s_HasIntrinsics = false;
 
+        /// <summary>
+        /// Awake.
+        /// </summary>
         void Awake()
         {
 #if UNITY_ANDROID
@@ -42,6 +70,9 @@ namespace Jam3.AR
 #endif // UNITY_ANDROID
         }
 
+        /// <summary>
+        /// OnEnable.
+        /// </summary>
         void OnEnable()
         {
             if (CameraManager == null || OcclusionManager == null) return;
@@ -52,6 +83,9 @@ namespace Jam3.AR
             m_CurrentScreenOrientation = null;
         }
 
+        /// <summary>
+        /// OnDisable.
+        /// </summary>
         void OnDisable()
         {
             if (CameraManager == null) return;
@@ -177,6 +211,12 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Gets the screen rotation.
+        /// </summary>
+        /// <value>
+        /// The screen rotation.
+        /// </value>
         public static Matrix4x4 ScreenRotation
         {
             get {
@@ -212,6 +252,9 @@ namespace Jam3.AR
             return snapshot;
         }
 
+        /// <summary>
+        /// Updates the data from the occlusion frame.
+        /// </summary>
         void OnOcclusionFrameEventReceived(AROcclusionFrameEventArgs occlusionFrameEventArgs)
         {
             if (occlusionFrameEventArgs.textures != null && occlusionFrameEventArgs.textures.Count > 0)
@@ -226,6 +269,9 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Updates the data from the camera frame.
+        /// </summary>
         void OnCameraFrameEventReceived(ARCameraFrameEventArgs cameraFrameEventArgs)
         {
             if (m_CurrentScreenOrientation == Screen.orientation)
@@ -263,6 +309,9 @@ namespace Jam3.AR
             Shader.SetGlobalMatrix(k_DisplayRotationPerFrameId, s_DisplayRotationMatrix);
         }
 
+        /// <summary>
+        /// Updates screen orientation.
+        /// </summary>
         private static void UpdateScreenOrientation()
         {
             switch (Screen.orientation)
@@ -282,6 +331,9 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Update.
+        /// </summary>
         private void Update()
         {
             UpdateScreenOrientation();

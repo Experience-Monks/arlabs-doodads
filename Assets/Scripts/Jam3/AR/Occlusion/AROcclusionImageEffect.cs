@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------
-// <copyright file="OcclusionImageEffect.cs" company="Google LLC">
+// <copyright file="AROcclusionImageEffect.cs" company="Jam3 Inc">
 //
-// Copyright 2020 Google LLC
+// Copyright 2021 Jam3 Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -39,6 +39,10 @@ namespace Jam3.AR
 
         [Space]
         public AROcclusionManager occlusionManager;
+
+        /// <summary>
+        /// The AR occlusion image config.
+        /// </summary>
         public AROcclusionImageConfig config;
 
         /// <summary>
@@ -47,9 +51,11 @@ namespace Jam3.AR
         [Space]
         public Shader OcclusionShader;
 
+        // Runtime static names
         private static readonly string DepthTexturePropertyName = "_CurrentDepthTexture";
         private static readonly string BackgroundTexturePropertyName = "_BackgroundTexture";
 
+        // Runtime Variables
         private Camera _camera;
         private Material _occlusionMaterial;
         private CommandBuffer _commandBuffer;
@@ -58,11 +64,21 @@ namespace Jam3.AR
         private AROcclusionImageConfig _defaultConfig = null;
 
         private bool isEnabled = true;
+
+        /// <summary>
+        /// Gets the is enabled.
+        /// </summary>
+        /// <value>
+        /// The is enabled.
+        /// </value>
         public bool IsEnabled
         {
             get { return isEnabled; }
         }
 
+        /// <summary>
+        /// Awake.
+        /// </summary>
         private void Awake()
         {
             Debug.Assert(OcclusionShader != null, "Occlusion Shader parameter must be set.");
@@ -82,6 +98,9 @@ namespace Jam3.AR
             _commandBuffer = new CommandBuffer { name = "Camera texture" };
         }
 
+        /// <summary>
+        /// Start.
+        /// </summary>
         void Start()
         {
             var backgroundRenderer = FindObjectOfType<ARCameraBackground>();
@@ -141,6 +160,10 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Sets occlusion enabled.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void SetOcclusionEnabled(bool value = true)
         {
             if (_occlusionMaterial != null)
@@ -149,6 +172,10 @@ namespace Jam3.AR
             isEnabled = value;
         }
 
+        /// <summary>
+        /// Sets occlusion config.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void SetOcclusionConfig(AROcclusionImageConfig value = null)
         {
             if (value == null)
@@ -159,41 +186,68 @@ namespace Jam3.AR
             UpdateOcclusionProperties();
         }
 
+        /// <summary>
+        /// Updates occlusion transparency.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void UpdateOcclusionTransparency(float value)
         {
             _currentConfig.OcclusionTransparency = value;
             UpdateOcclusionProperties();
         }
 
+        /// <summary>
+        /// Updates occlusion offset.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void UpdateOcclusionOffset(float value)
         {
             _currentConfig.OcclusionOffset = value;
             UpdateOcclusionProperties();
         }
 
+        /// <summary>
+        /// Updates occlusion fade velocity.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void UpdateOcclusionFadeVelocity(float value)
         {
             _currentConfig.OcclusionFadeVelocity = value;
         }
 
+        /// <summary>
+        /// Updates transition size.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void UpdateTransitionSize(float value)
         {
             _currentConfig.TransitionSize = value;
             UpdateOcclusionProperties();
         }
 
+        /// <summary>
+        /// Updates maximum occlusion distance.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void UpdateMaximumOcclusionDistance(float value)
         {
             _currentConfig.MaximumOcclusionDistance = value;
             UpdateOcclusionProperties();
         }
 
+        /// <summary>
+        /// Updates maximum occlusion distance transition.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void UpdateMaximumOcclusionDistanceTransition(float value)
         {
             _currentConfig.MaximumOcclusionDistanceTransition = value;
             UpdateOcclusionProperties();
         }
 
+        /// <summary>
+        /// Updates occlusion properties.
+        /// </summary>
         private void UpdateOcclusionProperties()
         {
             if (_currentConfig != null && _occlusionMaterial != null)
@@ -206,11 +260,17 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Update.
+        /// </summary>
         private void Update()
         {
             _occlusionMaterial.SetTexture(DepthTexturePropertyName, occlusionManager.environmentDepthTexture);
         }
 
+        /// <summary>
+        /// Ons enable.
+        /// </summary>
         private void OnEnable()
         {
             if (_commandBuffer != null)
@@ -219,6 +279,9 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Ons disable.
+        /// </summary>
         private void OnDisable()
         {
             if (_commandBuffer != null)
@@ -227,6 +290,11 @@ namespace Jam3.AR
             }
         }
 
+        /// <summary>
+        /// Ons render image.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="destination">The destination.</param>
         private void OnRenderImage(RenderTexture source, RenderTexture destination)
         {
             if (_commandBuffer != null)
