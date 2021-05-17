@@ -1,4 +1,6 @@
-# Jam3 Arlabs - AR Doodads Demo
+# Jam3 ARlabs - AR Doodads Demo
+
+This is a demo experimental project to showcase some potencial uses of the raw depth API in the ARCore extensions using unity's ARfoundation package.
 
 [<img alt="Get This demo on Google Play" height="50px" src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png" />](https://play.google.com/store/apps/details?id=com.jam3.arlabs)
 
