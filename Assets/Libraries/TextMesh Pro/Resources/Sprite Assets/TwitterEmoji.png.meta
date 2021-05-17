@@ -1,0 +1,824 @@
+fileFormatVersion: 2
+guid: e7572d14409710940a279ab9d6fbc44f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -712042264603400815
+    second: TwitterEmoji_0
+  - first:
+      213: 7654878835186976604
+    second: TwitterEmoji_1
+  - first:
+      213: 2544729327231311916
+    second: TwitterEmoji_2
+  - first:
+      213: -2592766693117518117
+    second: TwitterEmoji_3
+  - first:
+      213: -6293498395978075912
+    second: TwitterEmoji_4
+  - first:
+      213: 3017563231453483830
+    second: TwitterEmoji_5
+  - first:
+      213: -3086214812550180692
+    second: TwitterEmoji_6
+  - first:
+      213: -918295330536648698
+    second: TwitterEmoji_7
+  - first:
+      213: 6544893240033030690
+    second: TwitterEmoji_8
+  - first:
+      213: 1831832004404224298
+    second: TwitterEmoji_9
+  - first:
+      213: 9008034152397909726
+    second: TwitterEmoji_10
+  - first:
+      213: -6279426793432401805
+    second: TwitterEmoji_11
+  - first:
+      213: 5519413382334936834
+    second: TwitterEmoji_12
+  - first:
+      213: -4858125373007522598
+    second: TwitterEmoji_13
+  - first:
+      213: -6324673413917001759
+    second: TwitterEmoji_14
+  - first:
+      213: -1800556133365646428
+    second: TwitterEmoji_15
+  - first:
+      213: -2681146492125463131
+    second: TwitterEmoji_16
+  - first:
+      213: 7230822073421508925
+    second: TwitterEmoji_17
+  - first:
+      213: -6103814276734959317
+    second: TwitterEmoji_18
+  - first:
+      213: 7690145662586940144
+    second: TwitterEmoji_19
+  - first:
+      213: -5195252198498673718
+    second: TwitterEmoji_20
+  - first:
+      213: 3258224020188179607
+    second: TwitterEmoji_21
+  - first:
+      213: -3129990613728713604
+    second: TwitterEmoji_22
+  - first:
+      213: -7167017595424521465
+    second: TwitterEmoji_23
+  - first:
+      213: -8841963711058847893
+    second: TwitterEmoji_24
+  - first:
+      213: 2491565464017916064
+    second: TwitterEmoji_25
+  - first:
+      213: -8347233321089189475
+    second: TwitterEmoji_26
+  - first:
+      213: -7302893887309757540
+    second: TwitterEmoji_27
+  - first:
+      213: -6200018622347324990
+    second: TwitterEmoji_28
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TwitterEmoji_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 189
+        width: 43
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 195ef3935515e16f0800000000000000
+      internalID: -712042264603400815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_1
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 189
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c57c9f94eb79b3a60800000000000000
+      internalID: 7654878835186976604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_2
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 189
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c20242f27d1b05320800000000000000
+      internalID: 2544729327231311916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_3
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 189
+        width: 38
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bde144ffd64a40cd0800000000000000
+      internalID: -2592766693117518117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_4
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 189
+        width: 43
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f07c31ad8009a8a0800000000000000
+      internalID: -6293498395978075912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_5
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 199
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 633901275c980e920800000000000000
+      internalID: 3017563231453483830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_6
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 189
+        width: 49
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca0d56dbaff8b25d0800000000000000
+      internalID: -3086214812550180692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_7
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 189
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6009670234f8143f0800000000000000
+      internalID: -918295330536648698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 142
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2223609b9b124da50800000000000000
+      internalID: 6544893240033030690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_9
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 142
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a21a4b6a089fb6910800000000000000
+      internalID: 1831832004404224298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_10
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 142
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edea342c557f20d70800000000000000
+      internalID: 9008034152397909726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_11
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 142
+        width: 36
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3783468e99efad8a0800000000000000
+      internalID: -6279426793432401805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_12
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 142
+        width: 56
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2077c966a35e89c40800000000000000
+      internalID: 5519413382334936834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_13
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 95
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad4139376b8749cb0800000000000000
+      internalID: -4858125373007522598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_14
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 95
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e7be132a0f3a38a0800000000000000
+      internalID: -6324673413917001759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_15
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 95
+        width: 30
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4abf6988cb32307e0800000000000000
+      internalID: -1800556133365646428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_16
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 95
+        width: 31
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5adb3128877aacad0800000000000000
+      internalID: -2681146492125463131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 95
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d31b7508d5a095460800000000000000
+      internalID: 7230822073421508925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_18
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 95
+        width: 31
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2141443145ea4ba0800000000000000
+      internalID: -6103814276734959317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_19
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 48
+        width: 38
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fa61896cb2e8ba60800000000000000
+      internalID: 7690145662586940144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_20
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 48
+        width: 51
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acb5beda6a1c6e7b0800000000000000
+      internalID: -5195252198498673718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_21
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 48
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79c26f9cb79873d20800000000000000
+      internalID: 3258224020188179607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_22
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 48
+        width: 50
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c74a466ce1a0094d0800000000000000
+      internalID: -3129990613728713604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_23
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 48
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7034fbd2873a98c90800000000000000
+      internalID: -7167017595424521465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_24
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 40
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b67517df9d80b4580800000000000000
+      internalID: -8841963711058847893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_25
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a05b61b691d39220800000000000000
+      internalID: 2491565464017916064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_26
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1
+        width: 48
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99bc2f158ba82c80800000000000000
+      internalID: -8347233321089189475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_27
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 1
+        width: 44
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c93c78ea3b8e6aa90800000000000000
+      internalID: -7302893887309757540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TwitterEmoji_28
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 1
+        width: 30
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c15e2e79eb15f9a0800000000000000
+      internalID: -6200018622347324990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

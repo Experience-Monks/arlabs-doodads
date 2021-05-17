@@ -60,9 +60,7 @@ The AR code retated are inside the folder `Assets/Scripts/AR` the structure is d
 
 ### `ARCameraInfo`
 
-A static class that contains references to all AR camera infromation,
-texture of the depth map, camera intrinsics, and many other depth look up and
-coordinate transformation utilities.
+A static class that contains references to all AR camera infromation, texture of the depth map, camera intrinsics, and many other depth look up and coordinate transformation utilities.
 
 ### `ARCameraEffect`
 

@@ -1,0 +1,1037 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
+  m_Name: TwitterEmoji
+  m_EditorClassIdentifier: 
+  hashCode: 2094290521
+  material: {fileID: 8509838691687252835}
+  materialHashCode: 0
+  m_Version: 1.1.0
+  spriteSheet: {fileID: 2800000, guid: e7572d14409710940a279ab9d6fbc44f, type: 3}
+  m_SpriteCharacterTable:
+  - m_ElementType: 2
+    m_Unicode: 47807
+    m_GlyphIndex: 0
+    m_Scale: 1
+    m_Name: baby
+    m_HashCode: 3558680
+  - m_ElementType: 2
+    m_Unicode: 1069547518
+    m_GlyphIndex: 1
+    m_Scale: 1
+    m_Name: babyBottle
+    m_HashCode: -318728708
+  - m_ElementType: 2
+    m_Unicode: 2147344383
+    m_GlyphIndex: 2
+    m_Scale: 1
+    m_Name: bloodDrop
+    m_HashCode: 679056899
+  - m_ElementType: 2
+    m_Unicode: 3071
+    m_GlyphIndex: 3
+    m_Scale: 1
+    m_Name: box
+    m_HashCode: 108053
+  - m_ElementType: 2
+    m_Unicode: 3071
+    m_GlyphIndex: 4
+    m_Scale: 1
+    m_Name: boy
+    m_HashCode: 108052
+  - m_ElementType: 2
+    m_Unicode: 13631439
+    m_GlyphIndex: 5
+    m_Scale: 1
+    m_Name: church
+    m_HashCode: -444878361
+  - m_ElementType: 2
+    m_Unicode: 851919
+    m_GlyphIndex: 6
+    m_Scale: 1
+    m_Name: clock
+    m_HashCode: 116772488
+  - m_ElementType: 2
+    m_Unicode: 2063269887
+    m_GlyphIndex: 7
+    m_Scale: 1
+    m_Name: exclamation
+    m_HashCode: 229586851
+  - m_ElementType: 2
+    m_Unicode: 4294959103
+    m_GlyphIndex: 8
+    m_Scale: 1
+    m_Name: exploding
+    m_HashCode: -1914834646
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 9
+    m_Scale: 1
+    m_Name: fire
+    m_HashCode: 3711640
+  - m_ElementType: 2
+    m_Unicode: 1047295
+    m_GlyphIndex: 10
+    m_Scale: 1
+    m_Name: flash
+    m_HashCode: 122362704
+  - m_ElementType: 2
+    m_Unicode: 1048303
+    m_GlyphIndex: 11
+    m_Scale: 1
+    m_Name: green
+    m_HashCode: 121463835
+  - m_ElementType: 2
+    m_Unicode: 4095
+    m_GlyphIndex: 12
+    m_Scale: 1
+    m_Name: gun
+    m_HashCode: 111388
+  - m_ElementType: 2
+    m_Unicode: 1043199
+    m_GlyphIndex: 13
+    m_Scale: 1
+    m_Name: heart
+    m_HashCode: 120098698
+  - m_ElementType: 2
+    m_Unicode: 2147482367
+    m_GlyphIndex: 14
+    m_Scale: 1
+    m_Name: hourglass
+    m_HashCode: -860213398
+  - m_ElementType: 2
+    m_Unicode: 16777199
+    m_GlyphIndex: 15
+    m_Scale: 1
+    m_Name: houses
+    m_HashCode: -343029673
+  - m_ElementType: 2
+    m_Unicode: 4278190063
+    m_GlyphIndex: 16
+    m_Scale: 1
+    m_Name: middleFinger
+    m_HashCode: 539347004
+  - m_ElementType: 2
+    m_Unicode: 16776446
+    m_GlyphIndex: 17
+    m_Scale: 1
+    m_Name: muscle
+    m_HashCode: 93662081
+  - m_ElementType: 2
+    m_Unicode: 65535
+    m_GlyphIndex: 18
+    m_Scale: 1
+    m_Name: poop
+    m_HashCode: 3933152
+  - m_ElementType: 2
+    m_Unicode: 2097131487
+    m_GlyphIndex: 19
+    m_Scale: 1
+    m_Name: rockHands
+    m_HashCode: -1709970523
+  - m_ElementType: 2
+    m_Unicode: 16580607
+    m_GlyphIndex: 20
+    m_Scale: 1
+    m_Name: school
+    m_HashCode: 165500308
+  - m_ElementType: 2
+    m_Unicode: 1048559
+    m_GlyphIndex: 21
+    m_Scale: 1
+    m_Name: siren
+    m_HashCode: 135361763
+  - m_ElementType: 2
+    m_Unicode: 1048575
+    m_GlyphIndex: 22
+    m_Scale: 1
+    m_Name: skull
+    m_HashCode: 135429965
+  - m_ElementType: 2
+    m_Unicode: 1048574
+    m_GlyphIndex: 23
+    m_Scale: 1
+    m_Name: smile
+    m_HashCode: 135510942
+  - m_ElementType: 2
+    m_Unicode: 1048575
+    m_GlyphIndex: 24
+    m_Scale: 1
+    m_Name: storm
+    m_HashCode: 134902711
+  - m_ElementType: 2
+    m_Unicode: 1048559
+    m_GlyphIndex: 25
+    m_Scale: 1
+    m_Name: super
+    m_HashCode: 134675553
+  - m_ElementType: 2
+    m_Unicode: 4290768890
+    m_GlyphIndex: 26
+    m_Scale: 1
+    m_Name: umbrella
+    m_HashCode: -534734580
+  - m_ElementType: 2
+    m_Unicode: 1048495
+    m_GlyphIndex: 27
+    m_Scale: 1
+    m_Name: woman
+    m_HashCode: 140039034
+  m_SpriteGlyphTable:
+  - m_Index: 0
+    m_Metrics:
+      m_Width: 49
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 49
+    m_GlyphRect:
+      m_X: 1
+      m_Y: 189
+      m_Width: 49
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 1
+    m_Metrics:
+      m_Width: 45
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 45
+    m_GlyphRect:
+      m_X: 52
+      m_Y: 189
+      m_Width: 45
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 2
+    m_Metrics:
+      m_Width: 31
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 31
+    m_GlyphRect:
+      m_X: 99
+      m_Y: 189
+      m_Width: 31
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 3
+    m_Metrics:
+      m_Width: 36
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 36
+    m_GlyphRect:
+      m_X: 132
+      m_Y: 189
+      m_Width: 36
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 4
+    m_Metrics:
+      m_Width: 45
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 45
+    m_GlyphRect:
+      m_X: 170
+      m_Y: 189
+      m_Width: 45
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 5
+    m_Metrics:
+      m_Width: 38
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 38
+    m_GlyphRect:
+      m_X: 1
+      m_Y: 142
+      m_Width: 38
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 6
+    m_Metrics:
+      m_Width: 45
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 45
+    m_GlyphRect:
+      m_X: 41
+      m_Y: 142
+      m_Width: 45
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 7
+    m_Metrics:
+      m_Width: 9
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 9
+    m_GlyphRect:
+      m_X: 217
+      m_Y: 189
+      m_Width: 9
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 8
+    m_Metrics:
+      m_Width: 43
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 43
+    m_GlyphRect:
+      m_X: 88
+      m_Y: 142
+      m_Width: 43
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 9
+    m_Metrics:
+      m_Width: 43
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 43
+    m_GlyphRect:
+      m_X: 133
+      m_Y: 142
+      m_Width: 43
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 10
+    m_Metrics:
+      m_Width: 38
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 38
+    m_GlyphRect:
+      m_X: 178
+      m_Y: 142
+      m_Width: 38
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 11
+    m_Metrics:
+      m_Width: 45
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 45
+    m_GlyphRect:
+      m_X: 1
+      m_Y: 95
+      m_Width: 45
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 12
+    m_Metrics:
+      m_Width: 56
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 56
+    m_GlyphRect:
+      m_X: 48
+      m_Y: 95
+      m_Width: 56
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 13
+    m_Metrics:
+      m_Width: 48
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 48
+    m_GlyphRect:
+      m_X: 106
+      m_Y: 95
+      m_Width: 48
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 14
+    m_Metrics:
+      m_Width: 30
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 30
+    m_GlyphRect:
+      m_X: 156
+      m_Y: 95
+      m_Width: 30
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 15
+    m_Metrics:
+      m_Width: 51
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 51
+    m_GlyphRect:
+      m_X: 188
+      m_Y: 95
+      m_Width: 51
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 16
+    m_Metrics:
+      m_Width: 30
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 30
+    m_GlyphRect:
+      m_X: 1
+      m_Y: 48
+      m_Width: 30
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 17
+    m_Metrics:
+      m_Width: 44
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 44
+    m_GlyphRect:
+      m_X: 33
+      m_Y: 48
+      m_Width: 44
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 18
+    m_Metrics:
+      m_Width: 46
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 46
+    m_GlyphRect:
+      m_X: 79
+      m_Y: 48
+      m_Width: 46
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 19
+    m_Metrics:
+      m_Width: 31
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 31
+    m_GlyphRect:
+      m_X: 127
+      m_Y: 48
+      m_Width: 31
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 20
+    m_Metrics:
+      m_Width: 45
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 45
+    m_GlyphRect:
+      m_X: 160
+      m_Y: 48
+      m_Width: 45
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 21
+    m_Metrics:
+      m_Width: 45
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 45
+    m_GlyphRect:
+      m_X: 1
+      m_Y: 1
+      m_Width: 45
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 22
+    m_Metrics:
+      m_Width: 40
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 40
+    m_GlyphRect:
+      m_X: 48
+      m_Y: 1
+      m_Width: 40
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 23
+    m_Metrics:
+      m_Width: 45
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 45
+    m_GlyphRect:
+      m_X: 90
+      m_Y: 1
+      m_Width: 45
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 24
+    m_Metrics:
+      m_Width: 45
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 45
+    m_GlyphRect:
+      m_X: 137
+      m_Y: 1
+      m_Width: 45
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 25
+    m_Metrics:
+      m_Width: 50
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 50
+    m_GlyphRect:
+      m_X: 184
+      m_Y: 1
+      m_Width: 50
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 26
+    m_Metrics:
+      m_Width: 45
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 45
+    m_GlyphRect:
+      m_X: 228
+      m_Y: 189
+      m_Width: 45
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  - m_Index: 27
+    m_Metrics:
+      m_Width: 45
+      m_Height: 45
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 45
+      m_HorizontalAdvance: 45
+    m_GlyphRect:
+      m_X: 218
+      m_Y: 142
+      m_Width: 45
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 0}
+  spriteInfoList:
+  - id: 0
+    x: 1
+    y: 189
+    width: 49
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 49
+    scale: 1
+    name: baby
+    hashCode: 3558680
+    unicode: 47807
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 1
+    x: 52
+    y: 189
+    width: 45
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 45
+    scale: 1
+    name: babyBottle
+    hashCode: -318728708
+    unicode: 1069547518
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 2
+    x: 99
+    y: 189
+    width: 31
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 31
+    scale: 1
+    name: bloodDrop
+    hashCode: 679056899
+    unicode: 2147344383
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 3
+    x: 132
+    y: 189
+    width: 36
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 36
+    scale: 1
+    name: box
+    hashCode: 108053
+    unicode: 3071
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 4
+    x: 170
+    y: 189
+    width: 45
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 45
+    scale: 1
+    name: boy
+    hashCode: 108052
+    unicode: 3071
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 5
+    x: 1
+    y: 142
+    width: 38
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 38
+    scale: 1
+    name: church
+    hashCode: -444878361
+    unicode: 13631439
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 6
+    x: 41
+    y: 142
+    width: 45
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 45
+    scale: 1
+    name: clock
+    hashCode: 116772488
+    unicode: 851919
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 7
+    x: 217
+    y: 189
+    width: 9
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 9
+    scale: 1
+    name: exclamation
+    hashCode: 229586851
+    unicode: 2063269887
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 8
+    x: 88
+    y: 142
+    width: 43
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 43
+    scale: 1
+    name: exploding
+    hashCode: -1914834646
+    unicode: -8193
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 9
+    x: 133
+    y: 142
+    width: 43
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 43
+    scale: 1
+    name: fire
+    hashCode: 3711640
+    unicode: 65534
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 10
+    x: 178
+    y: 142
+    width: 38
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 38
+    scale: 1
+    name: flash
+    hashCode: 122362704
+    unicode: 1047295
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 11
+    x: 1
+    y: 95
+    width: 45
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 45
+    scale: 1
+    name: green
+    hashCode: 121463835
+    unicode: 1048303
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 12
+    x: 48
+    y: 95
+    width: 56
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 56
+    scale: 1
+    name: gun
+    hashCode: 111388
+    unicode: 4095
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 13
+    x: 106
+    y: 95
+    width: 48
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 48
+    scale: 1
+    name: heart
+    hashCode: 120098698
+    unicode: 1043199
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 14
+    x: 156
+    y: 95
+    width: 30
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 30
+    scale: 1
+    name: hourglass
+    hashCode: -860213398
+    unicode: 2147482367
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 15
+    x: 188
+    y: 95
+    width: 51
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 51
+    scale: 1
+    name: houses
+    hashCode: -343029673
+    unicode: 16777199
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 16
+    x: 1
+    y: 48
+    width: 30
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 30
+    scale: 1
+    name: middleFinger
+    hashCode: 539347004
+    unicode: -16777233
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 17
+    x: 33
+    y: 48
+    width: 44
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 44
+    scale: 1
+    name: muscle
+    hashCode: 93662081
+    unicode: 16776446
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 18
+    x: 79
+    y: 48
+    width: 46
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 46
+    scale: 1
+    name: poop
+    hashCode: 3933152
+    unicode: 65535
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 19
+    x: 127
+    y: 48
+    width: 31
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 31
+    scale: 1
+    name: rockHands
+    hashCode: -1709970523
+    unicode: 2097131487
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 20
+    x: 160
+    y: 48
+    width: 45
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 45
+    scale: 1
+    name: school
+    hashCode: 165500308
+    unicode: 16580607
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 21
+    x: 1
+    y: 1
+    width: 45
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 45
+    scale: 1
+    name: siren
+    hashCode: 135361763
+    unicode: 1048559
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 22
+    x: 48
+    y: 1
+    width: 40
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 40
+    scale: 1
+    name: skull
+    hashCode: 135429965
+    unicode: 1048575
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 23
+    x: 90
+    y: 1
+    width: 45
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 45
+    scale: 1
+    name: smile
+    hashCode: 135510942
+    unicode: 1048574
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 24
+    x: 137
+    y: 1
+    width: 45
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 45
+    scale: 1
+    name: storm
+    hashCode: 134902711
+    unicode: 1048575
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 25
+    x: 184
+    y: 1
+    width: 50
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 50
+    scale: 1
+    name: super
+    hashCode: 134675553
+    unicode: 1048559
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 26
+    x: 228
+    y: 189
+    width: 45
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 45
+    scale: 1
+    name: umbrella
+    hashCode: -534734580
+    unicode: -4198406
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  - id: 27
+    x: 218
+    y: 142
+    width: 45
+    height: 45
+    xOffset: 0
+    yOffset: 45
+    xAdvance: 45
+    scale: 1
+    name: woman
+    hashCode: 140039034
+    unicode: 1048495
+    pivot: {x: 0, y: 0}
+    sprite: {fileID: 0}
+  fallbackSpriteAssets: []
+--- !u!21 &8509838691687252835
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TextMeshPro/Sprite
+  m_Shader: {fileID: 4800000, guid: cf81c85f95fe47e1a27f6ae460cf182c, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: e7572d14409710940a279ab9d6fbc44f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
