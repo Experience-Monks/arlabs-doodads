@@ -86,9 +86,9 @@ Please read [CONTRIBUTING.md](https://github.com/Jam3/arlabs-doodads/blob/master
 
 ## Authors
 
-Fabio Toste - Creative Developer - @tostegroo - fabio.toste@jam3.com
-Higor Bimonti - Unity Developer - @hgbimonti - higor@finemug.com
-Nicolás Ezcurra - Unity Developer - @Nicolas-Ezcurra-Mediamonks - nicolas.ezcurra@mediamonks.com
+-   Fabio Toste - Creative Developer - @tostegroo - fabio.toste@jam3.com
+-   Higor Bimonti - Unity Developer - @hgbimonti - higor@finemug.com
+-   Nicolás Ezcurra - Unity Developer - @Nicolas-Ezcurra-Mediamonks - nicolas.ezcurra@mediamonks.com
 
 ## License
 
