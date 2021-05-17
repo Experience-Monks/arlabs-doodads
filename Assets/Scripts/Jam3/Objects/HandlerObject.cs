@@ -26,9 +26,12 @@ using Jam3.Util;
 namespace Jam3
 {
     /// <summary>
-    /// Handler object.
+    /// Responsible for the interaction with the user and allowing the object manipulation.
+    /// The handlers are positioned relative to the target object with help of the bounds information.
     /// </summary>
-    /// <seealso cref="MonoBehaviour" />
+    /// <seealso cref="UnityEngine.MonoBehaviour" />
+    /// <seealso cref="Jam3.TransformableObject" />
+    /// <seealso cref="Jam3.Bounds" />
     public class HandlerObject : MonoBehaviour
     {
         #region Enums
@@ -344,18 +347,6 @@ namespace Jam3
         /// <value>
         /// The scale minimum.
         /// </value>
-        public bool UniformScale
-        {
-            get => uniformScale;
-            set => uniformScale = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the scale minimum (local space).
-        /// </summary>
-        /// <value>
-        /// The scale minimum.
-        /// </value>
         public Vector3 ScaleMin
         {
             get => scaleMin;
@@ -372,6 +363,18 @@ namespace Jam3
         {
             get => scaleMax;
             set => scaleMax = value;
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a uniform scale should be applied.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [uniform scale]; otherwise, <c>false</c>.
+        /// </value>
+        public bool UniformScale
+        {
+            get => uniformScale;
+            set => uniformScale = value;
         }
 
         /// <summary>
@@ -486,10 +489,10 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Gets or sets the target. This will be the object used to update the handlers positions.
+        /// Gets or sets the handler target.
         /// </summary>
         /// <value>
-        /// The visual feedback.
+        /// The handler target.
         /// </value>
         public TransformableObject Target
         {
@@ -539,10 +542,12 @@ namespace Jam3
         /// </value>
         public Ray XHandlerRay
         {
-            get {
+            get
+            {
                 return IsXWorldHandler ? xWorldHandlerRay : xLocalHandlerRay;
             }
-            set {
+            set
+            {
                 if (IsXWorldHandler)
                     xWorldHandlerRay = value;
                 else
@@ -558,10 +563,12 @@ namespace Jam3
         /// </value>
         public Ray YHandlerRay
         {
-            get {
+            get
+            {
                 return IsYWorldHandler ? yWorldHandlerRay : yLocalHandlerRay;
             }
-            set {
+            set
+            {
                 if (IsYWorldHandler)
                     yWorldHandlerRay = value;
                 else
@@ -577,10 +584,12 @@ namespace Jam3
         /// </value>
         public Ray ZHandlerRay
         {
-            get {
+            get
+            {
                 return IsZWorldHandler ? zWorldHandlerRay : zLocalHandlerRay;
             }
-            set {
+            set
+            {
                 if (IsZWorldHandler)
                     zWorldHandlerRay = value;
                 else
@@ -591,10 +600,6 @@ namespace Jam3
         #endregion Properties
 
         #region Custom Events
-
-        public SimpleEvent<Vector3> TranslatedEvent;
-        public SimpleEvent<Vector3> RotatedEvent;
-        public SimpleEvent<Vector3> ScaledEvent;
 
         #endregion Custom Events
 
@@ -607,6 +612,14 @@ namespace Jam3
         {
             SetupGameObjectsLayer();
             RegisterCallbacks();
+        }
+
+        /// <summary>
+        /// Called upon destruction.
+        /// </summary>
+        private void OnDestroy()
+        {
+            UnregisterCallbacks();
         }
 
 
@@ -703,14 +716,6 @@ namespace Jam3
 
             // Manage the interaction
             DoInteraction(touchData);
-        }
-
-        /// <summary>
-        /// Destroys this instance.
-        /// </summary>
-        private void OnDestroy()
-        {
-            UnregisterCallbacks();
         }
 
         #endregion Events methods
@@ -812,7 +817,7 @@ namespace Jam3
         #region Non Public Methods
 
         /// <summary>
-        /// Registers the callback.
+        /// Registers the event callbacks.
         /// </summary>
         private void RegisterCallbacks()
         {
@@ -822,7 +827,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Unregisters the callback.
+        /// Unregisters the event callback.
         /// </summary>
         private void UnregisterCallbacks()
         {
@@ -855,8 +860,9 @@ namespace Jam3
 
 
         /// <summary>
-        /// Manages the interaction.
+        /// Manages the user input interaction.
         /// </summary>
+        /// <param name="touchData">The touch data.</param>
         private void DoInteraction(TouchManager.TouchElement touchData)
         {
             if (activeAxis != Axis.None)
@@ -876,8 +882,9 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Manages the translation iteraction.
+        /// Manages the translation interaction.
         /// </summary>
+        /// <param name="screenRay">The screen ray.</param>
         private void DoTranslateInteraction(Ray screenRay)
         {
             if (activeAxis.HasFlag(Axis.X))
@@ -891,8 +898,9 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Manages the rotation iteraction.
+        /// Manages the rotation interaction.
         /// </summary>
+        /// <param name="screenRay">The screen ray.</param>
         private void DoRotateInteraction(Ray screenRay)
         {
             if (activeAxis.HasFlag(Axis.X))
@@ -906,8 +914,9 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Manages the scale iteraction.
+        /// Manages the scale interaction.
         /// </summary>
+        /// <param name="screenRay">The screen ray.</param>
         private void DoScaleInteraction(Ray screenRay)
         {
             if (activeAxis.HasFlag(Axis.X))
@@ -950,6 +959,13 @@ namespace Jam3
         /// <summary>
         /// Rotates the target in a certain axis.
         /// </summary>
+        /// <param name="screenRay">The screen ray.</param>
+        /// <param name="handlerRay">The handler ray.</param>
+        /// <param name="isWorldHandler">if set to <c>true</c> the handler will be considered to target world space.</param>
+        /// <param name="handlerHitPoint">The handler hit point.</param>
+        /// <param name="handlerLastOffset">The handler last offset.</param>
+        /// <param name="multiplier">The multiplier.</param>
+        /// <param name="newHandlerLastOffset">The new handler last offset.</param>
         private void RotateAxis(Ray screenRay, Ray handlerRay, bool isWorldHandler, Vector3 handlerHitPoint, float handlerLastOffset, float multiplier, out float newHandlerLastOffset)
         {
             var screenPoint = Camera.main.WorldToScreenPoint(screenRay.origin);
@@ -963,12 +979,12 @@ namespace Jam3
                     Quaternion.Inverse(Target.TargetBounds.Rotation) * handlerRay.direction :
                     handlerRay.direction;
 
-                var newRotation = Target.ARBase.GetLocalRotation() + handlerRayLocalDirection * handlerDeltaOffset * multiplier * 0.01f * (180f / Mathf.PI);
-                //newRotation.x = Mathf.Clamp(newRotation.x, RotateMin.x, RotateMax.x);
-                //newRotation.y = Mathf.Clamp(newRotation.y, RotateMin.y, RotateMax.y);
-                //newRotation.z = Mathf.Clamp(newRotation.z, RotateMin.z, RotateMax.z);
+                var newLocalRotation = Target.ARBase.GetLocalRotation() + handlerRayLocalDirection * handlerDeltaOffset * multiplier * 0.01f * (180f / Mathf.PI);
+                //newLocalRotation.x = Mathf.Clamp(newLocalRotation.x, RotateMin.x, RotateMax.x);
+                //newLocalRotation.y = Mathf.Clamp(newLocalRotation.y, RotateMin.y, RotateMax.y);
+                //newLocalRotation.z = Mathf.Clamp(newLocalRotation.z, RotateMin.z, RotateMax.z);
 
-                Target.ARBase.SetLocalRotation(newRotation);
+                Target.ARBase.SetLocalRotation(newLocalRotation);
             }
 
             newHandlerLastOffset = handlerOffset;
@@ -977,6 +993,11 @@ namespace Jam3
         /// <summary>
         /// Scales the target in a certain axis.
         /// </summary>
+        /// <param name="screenRay">The screen ray.</param>
+        /// <param name="handlerRay">The handler ray.</param>
+        /// <param name="handlerLastOffset">The handler last offset.</param>
+        /// <param name="multiplier">The multiplier.</param>
+        /// <param name="newHandlerLastOffset">The new handler last offset.</param>
         private void ScaleAxis(Ray screenRay, Ray handlerRay, float handlerLastOffset, float multiplier, out float newHandlerLastOffset)
         {
             var handlerOffset = CalculateHandlerOffset(screenRay, handlerRay);

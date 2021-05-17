@@ -19,14 +19,16 @@
 //-----------------------------------------------------------------------
 
 using UnityEngine;
+
 using Jam3.Util;
 
 namespace Jam3
 {
     /// <summary>
-    /// Transformable object.
+    /// Allows an ARObject to be transformed and/or manipulated.
     /// </summary>
-    /// <seealso cref="MonoBehaviour" />
+    /// <seealso cref="UnityEngine.MonoBehaviour" />
+    /// <seealso cref="Jam3.ARObject" />
     [RequireComponent(typeof(ARObject))]
     public class TransformableObject : MonoBehaviour
     {
@@ -94,10 +96,10 @@ namespace Jam3
         #region Properties
 
         /// <summary>
-        /// Gets or sets the base.
+        /// Gets or sets the base AR component.
         /// </summary>
         /// <value>
-        /// The base.
+        /// The base AR component.
         /// </value>
         public ARObject ARBase =>
             cachedArObjectComponent;
@@ -120,6 +122,7 @@ namespace Jam3
         public Bounds TargetBounds =>
             ARBase.Bounds;
 
+
         /// <summary>
         /// Gets or sets the handler prefab.
         /// </summary>
@@ -132,6 +135,7 @@ namespace Jam3
             set => handlerPrefab = value;
         }
 
+
         /// <summary>
         /// Gets a value indicating whether this instance can be interacted with.
         /// </summary>
@@ -141,9 +145,7 @@ namespace Jam3
         public bool CanInteract
         {
             get => canInteract;
-            set {
-                canInteract = value;
-            }
+            set => canInteract = value;
         }
 
         /// <summary>
@@ -155,24 +157,7 @@ namespace Jam3
         public bool ShowTranslateHandler
         {
             get => showTranslateHandler;
-            set {
-                showTranslateHandler = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the translate enabled axis.
-        /// </summary>
-        /// <value>
-        /// The translate enabled axis.
-        /// </value>
-        public Axis TranslateEnabledAxis
-        {
-            get => translateEnabledAxis;
-            set {
-                translateEnabledAxis = value;
-                SetupHandler();
-            }
+            set => showTranslateHandler = value;
         }
 
         /// <summary>
@@ -184,38 +169,7 @@ namespace Jam3
         public bool ShowRotateHandler
         {
             get => showRotateHandler;
-            set {
-                showRotateHandler = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets if the alternative rotate handler.
-        /// </summary>
-        /// <value>
-        /// The alternative rotate handler.
-        /// </value>
-        public GameObject AlternativeRotateHandler
-        {
-            get => alternativeRotateHandler;
-            set {
-                alternativeRotateHandler = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the rotate enabled axis.
-        /// </summary>
-        /// <value>
-        /// The rotate enabled axis.
-        /// </value>
-        public Axis RotateEnabledAxis
-        {
-            get => rotateEnabledAxis;
-            set {
-                rotateEnabledAxis = value;
-                SetupHandler();
-            }
+            set => showRotateHandler = value;
         }
 
         /// <summary>
@@ -227,8 +181,38 @@ namespace Jam3
         public bool ShowScaleHandler
         {
             get => showScaleHandler;
-            set {
-                showScaleHandler = value;
+            set => showScaleHandler = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the translate enabled axis.
+        /// </summary>
+        /// <value>
+        /// The translate enabled axis.
+        /// </value>
+        public Axis TranslateEnabledAxis
+        {
+            get => translateEnabledAxis;
+            set
+            {
+                translateEnabledAxis = value;
+                SetupHandler();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the rotate enabled axis.
+        /// </summary>
+        /// <value>
+        /// The rotation enabled axis.
+        /// </value>
+        public Axis RotateEnabledAxis
+        {
+            get => rotateEnabledAxis;
+            set
+            {
+                rotateEnabledAxis = value;
+                SetupHandler();
             }
         }
 
@@ -241,10 +225,24 @@ namespace Jam3
         public Axis ScaleEnabledAxis
         {
             get => scaleEnabledAxis;
-            set {
+            set
+            {
                 scaleEnabledAxis = value;
                 SetupHandler();
             }
+        }
+
+
+        /// <summary>
+        /// Gets or sets the alternative rotate handler.
+        /// </summary>
+        /// <value>
+        /// The alternative rotate handler.
+        /// </value>
+        public GameObject AlternativeRotateHandler
+        {
+            get => alternativeRotateHandler;
+            set => alternativeRotateHandler = value;
         }
 
 
@@ -257,7 +255,8 @@ namespace Jam3
         public Vector3 TranslateMin
         {
             get => translateMin;
-            set {
+            set
+            {
                 translateMin = value;
                 SetupHandler();
             }
@@ -272,7 +271,8 @@ namespace Jam3
         public Vector3 TranslateMax
         {
             get => translateMax;
-            set {
+            set
+            {
                 translateMax = value;
                 SetupHandler();
             }
@@ -287,7 +287,8 @@ namespace Jam3
         public Vector3 RotateMin
         {
             get => rotateMin;
-            set {
+            set
+            {
                 rotateMin = value;
                 SetupHandler();
             }
@@ -302,7 +303,8 @@ namespace Jam3
         public Vector3 RotateMax
         {
             get => rotateMax;
-            set {
+            set
+            {
                 rotateMax = value;
                 SetupHandler();
             }
@@ -317,7 +319,8 @@ namespace Jam3
         public Vector3 ScaleMin
         {
             get => scaleMin;
-            set {
+            set
+            {
                 scaleMin = value;
                 SetupHandler();
             }
@@ -332,7 +335,8 @@ namespace Jam3
         public Vector3 ScaleMax
         {
             get => scaleMax;
-            set {
+            set
+            {
                 scaleMax = value;
                 SetupHandler();
             }
@@ -393,7 +397,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Destroys this instance.
+        /// Called upon destruction.
         /// </summary>
         private void OnDestroy()
         {
@@ -500,7 +504,7 @@ namespace Jam3
         #region Non Public Methods
 
         /// <summary>
-        /// Registers the callback.
+        /// Registers the callbacks.
         /// </summary>
         private void RegisterCallbacks()
         {
@@ -513,7 +517,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Unregisters the callback.
+        /// Unregisters the callbacks.
         /// </summary>
         private void UnregisterCallbacks()
         {
@@ -524,6 +528,7 @@ namespace Jam3
             ARBase.RotationSetEvent -= OnRotationSet;
             ARBase.ScaleSetEvent -= OnScaleSet;
         }
+
 
         /// <summary>
         /// Creates the handler.

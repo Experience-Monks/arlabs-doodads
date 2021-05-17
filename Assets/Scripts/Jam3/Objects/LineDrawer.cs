@@ -24,9 +24,10 @@ using UnityEngine.Rendering;
 namespace Jam3
 {
     /// <summary>
-    /// Line drawer.
+    /// Draws a line from the ARObject to the ground, or nearest surface.
+    /// Used as visual hint to know the spatial position of the object in the AR environment.
     /// </summary>
-    /// <seealso cref="MonoBehaviour" />
+    /// <seealso cref="UnityEngine.MonoBehaviour" />
     [RequireComponent(typeof(ARObject))]
     public class LineDrawer : MonoBehaviour
     {

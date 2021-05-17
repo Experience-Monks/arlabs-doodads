@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="TransformableGroundPlacer.cs" company="Jam3 Inc">
+// <copyright file="TransformableGrooundPlacer.cs" company="Jam3 Inc">
 //
 // Copyright 2021 Jam3 Inc.
 //
@@ -23,10 +23,9 @@ using UnityEngine;
 namespace Jam3
 {
     /// <summary>
-    /// Transformable ground placer.
+    /// Whenever this object is interacted with, this class will check it doesn't position itself below a surface.
     /// </summary>
-    /// <seealso cref="MonoBehaviour" />
-    [RequireComponent(typeof(ARObject))]
+    /// <seealso cref="UnityEngine.MonoBehaviour" />
     [RequireComponent(typeof(TransformableObject))]
     public class TransformableGroundPlacer : MonoBehaviour
     {
@@ -68,19 +67,19 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Gets the base.
+        /// Gets the base AR component.
         /// </summary>
         /// <value>
-        /// The base.
+        /// The base AR component.
         /// </value>
         public ARObject ARBase =>
             cachedArObjectComponent;
 
         /// <summary>
-        /// Gets the transformable.
+        /// Gets the target transformable.
         /// </summary>
         /// <value>
-        /// The transformable.
+        /// The target transformable.
         /// </value>
         public TransformableObject Transformable =>
             cachedTransformableObject;
@@ -125,7 +124,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Destroys this instance.
+        /// Called upon destruction.
         /// </summary>
         private void OnDestroy()
         {
@@ -165,7 +164,7 @@ namespace Jam3
         #region Public Methods
 
         /// <summary>
-        /// Updates the height limit.
+        /// Updates the transformable height limit.
         /// </summary>
         public void UpdateHeightLimit()
         {
@@ -180,6 +179,7 @@ namespace Jam3
                 );
 
                 // Check if current position is under the limit
+                // If so move the object to its minimun value
                 var currentPosition = Transformable.ARBase.GetWorldPosition();
                 if (currentPosition.y < groundHeight)
                 {
@@ -204,7 +204,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Registers the callbacks.
+        /// Unregisters the callbacks.
         /// </summary>
         private void UnregisterCallbacks()
         {
@@ -265,9 +265,10 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Grounds the height at position.
+        /// Checks the ground height at a given world position.
         /// </summary>
         /// <param name="worldPosition">The world position.</param>
+        /// <param name="groundHeight">Height of the ground.</param>
         /// <returns></returns>
         private bool GroundHeightAtPosition(Vector3 worldPosition, out float groundHeight)
         {

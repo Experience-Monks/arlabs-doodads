@@ -24,9 +24,10 @@ using DG.Tweening;
 namespace Jam3
 {
     /// <summary>
-    /// Physic object.
+    /// Allows an ARObject to have Physics interactions.
     /// </summary>
-    /// <seealso cref="MonoBehaviour" />
+    /// <seealso cref="UnityEngine.MonoBehaviour" />
+    /// <seealso cref="Jam3.ARObject" />
     [RequireComponent(typeof(ARObject))]
     public class PhysicObject : MonoBehaviour
     {
@@ -81,10 +82,10 @@ namespace Jam3
         #region Properties
 
         /// <summary>
-        /// Gets or sets the base.
+        /// Gets the base AR component.
         /// </summary>
         /// <value>
-        /// The base.
+        /// The base AR component.
         /// </value>
         public ARObject ARBase =>
             cachedArObjectComponent;
@@ -225,7 +226,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Destroys this instance.
+        /// Called upon destruction.
         /// </summary>
         private void OnDestroy()
         {
@@ -354,7 +355,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Resets the rigid body.
+        /// Resets the rigid body by stopping its physic interaction and resetting its position and rotation.
         /// </summary>
         public void ResetRigidBody()
         {
@@ -404,7 +405,6 @@ namespace Jam3
                 currentDirectionId = -1;
                 ChangeActionTriggerDirection();
             }
-
         }
 
         /// <summary>
@@ -417,7 +417,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Releases the spring, starting the physic gameflow (No froce added).
+        /// Releases the spring, starting the physic gameflow (no force added).
         /// </summary>
         public void ReleaseSpring()
         {
@@ -432,7 +432,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Drops the object, starting the physic gameflow (No froce added).
+        /// Drops the object, starting the physic gameflow (no force added).
         /// </summary>
         public void DropObject()
         {
@@ -450,22 +450,8 @@ namespace Jam3
 
         #region Non Public Methods
 
-        private void StartObject()
-        {
-            // Reset counters
-            TraveledDistance = 0f;
-            MaxSpeed = 0f;
-
-            // Cache starting position
-            lastPosition = ObjectRigidbody.transform.position;
-            ObjectRigidbody.isKinematic = false;
-
-            // Set flag
-            playing = true;
-        }
-
         /// <summary>
-        /// Registers the callback.
+        /// Registers the callbacks.
         /// </summary>
         private void RegisterCallbacks()
         {
@@ -478,7 +464,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Registers the callback.
+        /// Registers the callbacks.
         /// </summary>
         private void UnregisterCallbacks()
         {
@@ -488,6 +474,24 @@ namespace Jam3
             ARBase.PositionSetEvent -= OnPositionSet;
             ARBase.RotationSetEvent -= OnRotationSet;
             ARBase.ScaleSetEvent -= OnScaleSet;
+        }
+
+
+        /// <summary>
+        /// Starts the object physic interactions.
+        /// </summary>
+        private void StartObject()
+        {
+            // Reset counters
+            TraveledDistance = 0f;
+            MaxSpeed = 0f;
+
+            // Cache starting position
+            lastPosition = ObjectRigidbody.transform.position;
+            ObjectRigidbody.isKinematic = false;
+
+            // Set flag
+            playing = true;
         }
 
         #endregion Non Public Methods

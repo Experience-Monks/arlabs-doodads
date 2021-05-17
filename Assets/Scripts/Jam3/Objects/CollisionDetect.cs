@@ -23,9 +23,9 @@ using UnityEngine;
 namespace Jam3
 {
     /// <summary>
-    /// Collision detect.
+    /// Used for knowing when to ARObject are colliding. 
     /// </summary>
-    /// <seealso cref="MonoBehaviour" />
+    /// <seealso cref="UnityEngine.MonoBehaviour" />
     public class CollisionDetect : MonoBehaviour
     {
         public ARObject Controller = null;
@@ -67,7 +67,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Fixeds update.
+        /// Called after regular update.
         /// </summary>
         private void FixedUpdate()
         {
@@ -76,7 +76,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Update.
+        /// Updates this instance.
         /// </summary>
         private void Update()
         {
@@ -94,8 +94,9 @@ namespace Jam3
             }
         }
 
+
         /// <summary>
-        /// Ons trigger stay.
+        /// Called when [trigger stay].
         /// </summary>
         /// <param name="other">The other.</param>
         private void OnTriggerStay(Collider other)
@@ -108,9 +109,9 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Ons collision enter.
+        /// Called when [collision enter].
         /// </summary>
-        /// <param name="collisionInfo">The collision info.</param>
+        /// <param name="collisionInfo">The collision information.</param>
         private void OnCollisionEnter(Collision collisionInfo)
         {
             if (IsColliderSurface(collisionInfo.collider))
@@ -121,9 +122,9 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Ons collision stay.
+        /// Called when [collision stay].
         /// </summary>
-        /// <param name="collisionInfo">The collision info.</param>
+        /// <param name="collisionInfo">The collision information.</param>
         private void OnCollisionStay(Collision collisionInfo)
         {
             if (IsColliderSurface(collisionInfo.collider))
@@ -131,9 +132,12 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Are collider object.
+        /// Determines whether [other] is a candidate collidable object.
         /// </summary>
         /// <param name="other">The other.</param>
+        /// <returns>
+        ///   <c>true</c> if [other] is a candidate collidable object; otherwise, <c>false</c>.
+        /// </returns>
         private bool IsColliderObject(Collider other)
         {
             bool isCollider = (other.gameObject.layer == (int)Layers.Draggable || other.gameObject.layer == (int)Layers.DraggableAction) &&
@@ -145,9 +149,12 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Are collider surface.
+        /// Determines whether [other] is a candidate collidable surface.
         /// </summary>
         /// <param name="other">The other.</param>
+        /// <returns>
+        ///   <c>true</c> if [other] is a candidate collidable surface; otherwise, <c>false</c>.
+        /// </returns>
         private bool IsColliderSurface(Collider other)
         {
             bool isCollider = (other.gameObject.layer == (int)Layers.Surface ||

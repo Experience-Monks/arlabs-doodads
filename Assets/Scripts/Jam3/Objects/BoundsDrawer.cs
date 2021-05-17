@@ -22,14 +22,16 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using TMPro;
 using DG.Tweening;
+
 using Jam3.Util;
 
 namespace Jam3
 {
     /// <summary>
-    /// Bounds drawer.
+    /// Responsible for drawing the bounds of an ARObject.
     /// </summary>
-    /// <seealso cref="MonoBehaviour" />
+    /// <seealso cref="UnityEngine.MonoBehaviour" />
+    /// <seealso cref="Jam3.ARObject" />
     [RequireComponent(typeof(ARObject))]
     public class BoundsDrawer : MonoBehaviour
     {
@@ -71,7 +73,7 @@ namespace Jam3
         #region Properties
 
         /// <summary>
-        /// Gets or sets the base.
+        /// Gets the base AR component.
         /// </summary>
         /// <value>
         /// The base.
@@ -114,12 +116,22 @@ namespace Jam3
         }
 
         /// <summary>
+        /// Update is called every frame, if the MonoBehaviour is enabled.
+        /// </summary>
+        private void Update()
+        {
+            //Set the label orientation look at the camera
+            UpdateLabelsOrientation();
+        }
+
+        /// <summary>
         /// Destroys this instance.
         /// </summary>
         private void OnDestroy()
         {
             UnregisterCallbacks();
         }
+
 
         /// <summary>
         /// Called when this object is selected.
@@ -204,7 +216,8 @@ namespace Jam3
             if (instancedLineMaterial != null)
             {
                 instancedLineMaterial.DOKill();
-                instancedLineMaterial.DOFloat(0.0f, "_Alpha", time).SetEase(Ease.InOutSine).SetDelay(delay).OnComplete(() => {
+                instancedLineMaterial.DOFloat(0.0f, "_Alpha", time).SetEase(Ease.InOutSine).SetDelay(delay).OnComplete(() =>
+                {
                     for (int i = 0; i < wireRenderer.Length; i++)
                     {
                         wireRenderer[i].enabled = false;
@@ -218,22 +231,13 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Update is called every frame, if the MonoBehaviour is enabled.
-        /// </summary>
-        public void Update()
-        {
-            //Set the label orientation look at the camera
-            UpdateLabelsOrientation();
-        }
-
-        /// <summary>
         /// Updates the labels position.
         /// </summary>
         public void UpdateLabelsOrientation()
         {
-            SetlocalXScale(LabelHeight);
-            SetlocalXScale(LabelWidth);
-            SetlocalXScale(LabelDepth);
+            SetLabelLocalXScale(LabelHeight);
+            SetLabelLocalXScale(LabelWidth);
+            SetLabelLocalXScale(LabelDepth);
         }
 
         /// <summary>
@@ -319,19 +323,6 @@ namespace Jam3
 
         #region Non Public Methods
 
-        private void SetlocalXScale(TMP_Text label)
-        {
-            if (label != null)
-            {
-                float value = Vector3.Dot(mainCamera.transform.forward, label.transform.forward);
-                value = value < 0f ? -1 : 1;
-
-                Vector3 scale = label.transform.localScale;
-                scale.x = value;
-                label.transform.localScale = scale;
-            }
-        }
-
         /// <summary>
         /// Registers the callback.
         /// </summary>
@@ -354,6 +345,24 @@ namespace Jam3
             ARBase.PositionSetEvent -= OnPositionSet;
             ARBase.RotationSetEvent -= OnRotationSet;
             ARBase.ScaleSetEvent -= OnScaleSet;
+        }
+
+
+        /// <summary>
+        /// Sets the label local x scale.
+        /// </summary>
+        /// <param name="label">The label.</param>
+        private void SetLabelLocalXScale(TMP_Text label)
+        {
+            if (label != null)
+            {
+                float value = Vector3.Dot(mainCamera.transform.forward, label.transform.forward);
+                value = value < 0f ? -1 : 1;
+
+                Vector3 scale = label.transform.localScale;
+                scale.x = value;
+                label.transform.localScale = scale;
+            }
         }
 
 

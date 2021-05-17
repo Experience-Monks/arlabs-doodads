@@ -23,9 +23,10 @@ using UnityEngine;
 namespace Jam3
 {
     /// <summary>
-    /// Object i d.
+    /// Let the object be identified by a single ID.
+    /// Used in ARObject to allow identifying spawned objects with its associated interactive (prefab) object.
     /// </summary>
-    /// <seealso cref="MonoBehaviour" />
+    /// <seealso cref="UnityEngine.MonoBehaviour" />
     public class ObjectID : MonoBehaviour
     {
         #region Exposed fields

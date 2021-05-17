@@ -19,13 +19,12 @@
 //-----------------------------------------------------------------------
 
 using System;
-
 using UnityEngine;
 
 namespace Jam3
 {
     /// <summary>
-    /// A r object.
+    /// Base component for any AR object. Further features will be enabled depending on which other components are added to the same object. For example TransformableObject component.
     /// </summary>
     /// <seealso cref="MonoBehaviour" />
     [RequireComponent(typeof(ObjectID))]
@@ -235,7 +234,7 @@ namespace Jam3
         public Renderer Renderer
         {
             get => cachedRendererComponent;
-            set => cachedRendererComponent = value;
+            private set => cachedRendererComponent = value;
         }
 
         /// <summary>
@@ -251,7 +250,7 @@ namespace Jam3
         /// Gets the <see cref="CustomizableObject"/>.
         /// </summary>
         /// <value>
-        /// The customization.
+        /// The <see cref="CustomizableObject"/>.
         /// </value>
         public CustomizableObject Customization =>
             cachedCustomizableComponent;
@@ -266,10 +265,10 @@ namespace Jam3
             cachedTransformableComponent;
 
         /// <summary>
-        /// Gets the <see cref="TransformableObject"/>.
+        /// Gets the <see cref="BoundsDrawer"/>.
         /// </summary>
         /// <value>
-        /// The <see cref="TransformableObject"/>.
+        /// The <see cref="BoundsDrawer"/>.
         /// </value>
         public BoundsDrawer BoundsDrawer =>
             cachedBoundsDrawerComponent;
@@ -278,16 +277,34 @@ namespace Jam3
 
         #region Custom Events
 
+        /// <summary>
+        /// Occurs when [selected event].
+        /// </summary>
         public event SimpleEvent SelectedEvent;
 
+        /// <summary>
+        /// Occurs when [deselected event].
+        /// </summary>
         public event SimpleEvent DeselectedEvent;
 
+        /// <summary>
+        /// Occurs when [placed event].
+        /// </summary>
         public event SimpleEvent PlacedEvent;
 
+        /// <summary>
+        /// Occurs when [position set event].
+        /// </summary>
         public event SimpleEvent<Vector3> PositionSetEvent;
 
+        /// <summary>
+        /// Occurs when [rotation set event].
+        /// </summary>
         public event SimpleEvent<Vector3> RotationSetEvent;
 
+        /// <summary>
+        /// Occurs when [scale set event].
+        /// </summary>
         public event SimpleEvent<Vector3> ScaleSetEvent;
 
         #endregion Custom Events
@@ -333,11 +350,32 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Destroys this instance.
+        /// Called upon destruction.
         /// </summary>
         private void OnDestroy()
         {
             UnregisterCallbacks();
+        }
+
+        /// <summary>
+        /// Updates this instance.
+        /// </summary>
+        private void Update()
+        {
+            if (TranslateObject != null)
+                TranslateObject.position = Vector3.Lerp(TranslateObject.position, targetPosition, moveSpeed * Time.deltaTime);
+
+            if (Bounds != null)
+                Bounds.UpdateBounds();
+
+            if (BoundsDrawer != null)
+            {
+                BoundsDrawer.UpdateLabelsPosition();
+                BoundsDrawer.UpdateWiresPosition();
+            }
+
+            if (Transformation != null)
+                Transformation.Handler.UpdateHandlerPositions();
         }
 
 
@@ -370,27 +408,6 @@ namespace Jam3
         public void Place()
         {
             PlacedEvent?.Invoke();
-        }
-
-        /// <summary>
-        /// Updates this instance.
-        /// </summary>
-        void Update()
-        {
-            if (TranslateObject != null)
-                TranslateObject.position = Vector3.Lerp(TranslateObject.position, targetPosition, moveSpeed * Time.deltaTime);
-
-            if (Bounds != null)
-                Bounds.UpdateBounds();
-
-            if (BoundsDrawer != null)
-            {
-                BoundsDrawer.UpdateLabelsPosition();
-                BoundsDrawer.UpdateWiresPosition();
-            }
-
-            if (Transformation != null)
-                Transformation.Handler.UpdateHandlerPositions();
         }
 
         /// <summary>

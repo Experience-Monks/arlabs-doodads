@@ -23,9 +23,10 @@ using UnityEngine;
 namespace Jam3
 {
     /// <summary>
-    /// Customizable object.
+    /// Allows an ARObject to be customized by changing its material properties.
     /// </summary>
-    /// <seealso cref="MonoBehaviour" />
+    /// <seealso cref="UnityEngine.MonoBehaviour" />
+    /// <seealso cref="Jam3.ARObject" />
     [RequireComponent(typeof(ARObject))]
     public class CustomizableObject : MonoBehaviour
     {

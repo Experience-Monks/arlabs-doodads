@@ -1,23 +1,3 @@
-//-----------------------------------------------------------------------
-// <copyright file="PlacementManager.cs" company="Jam3 Inc">
-//
-// Copyright 2021 Jam3 Inc.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// </copyright>
-//-----------------------------------------------------------------------
-
 using UnityEngine;
 using Jam3.Util;
 
@@ -39,7 +19,6 @@ namespace Jam3
         public Layers BackgroundLayer = Layers.BackgroundMesh;
         public GameObject TargetObject = null;
 
-        // Runtime variables
         private int hitLayerMask = -1;
         private int hitLayerMaskSecundary = -1;
 
@@ -47,8 +26,9 @@ namespace Jam3
         private Vector3 outPosition = new Vector3(-1000f, -1000f, -1000f);
         private Vector3 hitPosition;
 
+
         /// <summary>
-        /// Awake.
+        /// Awakes this instance.
         /// </summary>
         public override void Awake()
         {
@@ -57,7 +37,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Start.
+        /// Starts this instance.
         /// </summary>
         private void Start()
         {
@@ -69,7 +49,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Update.
+        /// Updates this instance.
         /// </summary>
         private void Update()
         {
@@ -79,10 +59,11 @@ namespace Jam3
                 TargetObject.transform.position = hitPosition;
         }
 
+
         /// <summary>
-        /// Shows target.
+        /// Shows the UX target hint.
         /// </summary>
-        /// <param name="show">The show.</param>
+        /// <param name="show">if set to <c>true</c> [show].</param>
         public void ShowTarget(bool show)
         {
             if (TargetObject != null)
@@ -90,7 +71,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Places object.
+        /// Confirms and places the object.
         /// </summary>
         public void PlaceObject()
         {
@@ -105,11 +86,11 @@ namespace Jam3
                 SelectedObject.Place();
             }
 
-            Cancel();
+            Stop();
         }
 
         /// <summary>
-        /// Deletes object.
+        /// Deletes the selected object.
         /// </summary>
         public void DeleteObject()
         {
@@ -126,7 +107,8 @@ namespace Jam3
                 }
             }
 
-            Cancel();
+            Stop();
+
             SelectionManager.Instance.DestroyObject();
 
             if (InSceneObjectsCount == 0 && !PopUpManager.Instance.IsShowing)
@@ -136,16 +118,16 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Cancel.
+        /// Stops the placement (it may have been confirmed, or cancelled).
         /// </summary>
-        public void Cancel()
+        public void Stop()
         {
             if (SelectedObject != null)
                 SelectedObject = null;
         }
 
         /// <summary>
-        /// Sets selected object.
+        /// Sets the selected object.
         /// </summary>
         /// <param name="arObject">The ar object.</param>
         public void SetSelectedObject(ARObject arObject)
@@ -159,7 +141,7 @@ namespace Jam3
         }
 
         /// <summary>
-        /// Gets surface hit.
+        /// Gets the current surface hit.
         /// </summary>
         private void GetSurfaceHit()
         {
@@ -205,7 +187,7 @@ namespace Jam3
                 // Get nearest hit for new ray
                 var nearestHitPoint = GetNearestHit(downwardsRay, hitLayerMask);
 
-                // Check if hit exist and if is in range
+                // Check if hit exist
                 if (nearestHitPoint.HasValue)
                 {
                     hitPosition = nearestHitPoint.Value;
@@ -217,8 +199,8 @@ namespace Jam3
         /// <summary>
         /// Gets the nearest hit for a given ray.
         /// </summary>
-        /// <param name="ray">The ray.</param>
-        /// <returns></returns>
+        /// <param name="ray">The casting ray.</param>
+        /// <returns>Nearest hit point if it exist</returns>
         private Vector3? GetNearestHit(Ray ray, int layerMask)
         {
             var nearestHitPoint = default(Vector3?);

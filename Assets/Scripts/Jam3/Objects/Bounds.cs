@@ -23,7 +23,7 @@ using UnityEngine;
 namespace Jam3
 {
     /// <summary>
-    /// Bounds.
+    /// Bounds on an object.
     /// </summary>
     public class Bounds
     {

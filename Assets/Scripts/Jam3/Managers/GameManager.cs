@@ -117,7 +117,7 @@ namespace Jam3
 
             SelectionManager.Instance.UnselectObject();
 
-            PlacementManager.Instance.Cancel();
+            PlacementManager.Instance.Stop();
             PlacementManager.Instance.IsBallPlaced = false;
             PlacementManager.Instance.InSceneObjectsCount = 0;
 
