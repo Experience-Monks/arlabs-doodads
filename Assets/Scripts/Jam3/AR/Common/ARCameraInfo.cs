@@ -368,7 +368,7 @@ namespace Jam3.AR
             }
             else
             {
-                if (OcclusionManager == null) return;
+                if (OcclusionManager == null || OcclusionManager.currentEnvironmentDepthMode == EnvironmentDepthMode.Disabled) return;
 
                 s_DepthTexture = OcclusionManager.environmentDepthTexture;
                 s_RawDepthTexture = OcclusionManager.GetEnvironmentRawDepthTexture();
