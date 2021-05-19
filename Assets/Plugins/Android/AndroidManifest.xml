@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.jam3.arlabs" android:versionCode="30" android:versionName="1.0">
+  <!-- FROM GOOGLE -->
+
+  <!-- Required to support augmented reality (AR) functionality.-->
+  <!-- Should be added by Unity / AR Foundation / ARCore XR Plugin -->
+  <uses-permission android:name="android.permission.CAMERA" />
+
+
+  <!-- Limits app visibility to ARCore supported devices. -->
+  <!-- Should be added by Unity / AR Foundation / ARCore XR Plugin -->
+  <uses-feature android:name="android.hardware.camera.ar" />
+
+  <!-- Device must support the ARCore Depth API -->
+  <uses-feature android:name="com.google.ar.core.depth" />
+
+  <!-- Device must have 5G radio -->
+  <!-- (Currently, no uses-feature tag exists to identify 5G devices. Google will use thePlay Store to manually exclude devices that are not 5G. No manifest changesare needed at this time to support 5G device filtering.) -->
+
+  <uses-permission android:name="android.permission.INTERNET" />
+
+  <!-- Limits app visibility to devices with a back-facing camera. -->
+  <uses-feature android:name="android.hardware.camera" />
+
+  <!-- UNITY -->
+
+  <application android:label="@string/app_name" android:icon="@drawable/app_icon">
+    <activity android:name="com.unity3d.player.UnityPlayerActivity" android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+      <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+    </activity>
+
+    <!-- FROM GOOGLE -->
+    <!-- "AR Required" app. -->
+    <meta-data android:name="com.google.ar.core" android:value="required" />
+  </application>
+</manifest>

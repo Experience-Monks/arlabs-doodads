@@ -7,3 +7,12 @@
                     -keep class com.google.android.gms.tasks.** { *; }
 
 ### Module Progurad Rules ends ###
+
+### Module Progurad Rules starts ###
+
+## KeylessModule ##
+-keep class com.google.android.gms.common.** { *; }
+                    -keep class com.google.android.gms.auth.** { *; }
+                    -keep class com.google.android.gms.tasks.** { *; }
+
+### Module Progurad Rules ends ###
